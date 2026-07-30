@@ -1,9 +1,10 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #cac5c5;
-  --light: #f1f8ff;
-  --dark: #0f172b;
+  --GOLD: #cda06a;
+  --GOLD_SOFT: #e8caa0;
+  --INK: #0b0b0c;
+  --PANEL: #141416;
+  --TEXT: #f5f4f2;
+  --TEXT_MUTED: rgba(245, 244, 242, 0.68);
 }
 
 @media (prefers-color-scheme: dark) {
