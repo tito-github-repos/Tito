@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, type ChangeEvent } from "react";
+import * as yup from "yup";
 import {
+  Alert,
   Box,
   Container,
   Grid,
@@ -28,6 +30,50 @@ const INK = "#0b0b0c";
 const PANEL = "#141416";
 const TEXT = "#f5f4f2";
 const TEXT_MUTED = "rgba(245, 244, 242, 0.68)";
+
+/* ---------------------------------------------------------------------- */
+/* Validation                                                              */
+/* ---------------------------------------------------------------------- */
+const isRepeatedDigits = (value: string) => /^(\d)\1{9}$/.test(value);
+
+const isSequential = (value: string) => {
+  const ascending = "01234567890123456789"; // covers wrap-around sequences
+  const descending = "98765432109876543210";
+  return ascending.includes(value) || descending.includes(value);
+};
+
+const contactSchema = yup.object({
+  name: yup
+    .string()
+    .required("Full name is required")
+    .matches(/^[A-Za-z ]+$/, "Only alphabets are allowed")
+    .min(3, "Name must be at least 3 characters"),
+
+  email: yup
+    .string()
+    .required("Email address is required")
+    .matches(/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/, "Enter a valid email address"),
+
+  mobile: yup
+    .string()
+    .required("Mobile number is required")
+    .matches(/^[6-9]\d{9}$/, "Enter a valid 10-digit phone number")
+    .test(
+      "no-repeated-digits",
+      "Mobile number cannot be all the same digit",
+      (value) => !value || !isRepeatedDigits(value),
+    )
+    .test(
+      "no-sequential-digits",
+      "Mobile number cannot be a sequential number",
+      (value) => !value || !isSequential(value),
+    ),
+
+  note: yup
+    .string()
+    .required("Please leave a note")
+    .min(10, "Note must be at least 10 characters"),
+});
 
 /* ---------------------------------------------------------------------- */
 /* Info row — now a horizontal item: icon left, label+value stacked right */
@@ -104,22 +150,102 @@ const ContactInfoSection: React.FC = () => {
     mobile: "",
     note: "",
   });
+  const [errors, setErrors] = useState<ContactFormValues>({
+    name: "",
+    email: "",
+    mobile: "",
+    note: "",
+  });
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const validateField = async (
+    field: keyof ContactFormValues,
+    updatedValues: ContactFormValues,
+  ) => {
+    try {
+      await contactSchema.validateAt(field, updatedValues);
+      setErrors((prev) => ({ ...prev, [field]: "" }));
+    } catch (err) {
+      if (err instanceof yup.ValidationError) {
+        setErrors((prev) => ({ ...prev, [field]: err.message }));
+      }
+    }
+  };
 
   const handleChange =
     (field: keyof ContactFormValues) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setValues((prev) => ({ ...prev, [field]: e.target.value }));
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const rawValue = e.target.value;
+      const nextValue =
+        field === "mobile"
+          ? rawValue.replace(/\D/g, "").slice(0, 10)
+          : rawValue;
+
+      const updatedValues = { ...values, [field]: nextValue };
+      setValues(updatedValues);
+      validateField(field, updatedValues);
     };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSuccess(false);
     setSubmitting(true);
+
     try {
-      // TODO: wire this up to your API / mail endpoint
-      // await fetch("/api/contact", { method: "POST", body: JSON.stringify(values) });
-      console.log("Contact form submitted:", values);
-      setValues({ name: "", email: "", mobile: "", note: "" });
+      await contactSchema.validate(values, { abortEarly: false });
+
+      setErrors({
+        name: "",
+        email: "",
+        mobile: "",
+        note: "",
+      });
+
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.message || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSuccess(true);
+
+      setValues({
+        name: "",
+        email: "",
+        mobile: "",
+        note: "",
+      });
+    } catch (err) {
+      if (err instanceof yup.ValidationError) {
+        const formErrors: ContactFormValues = {
+          name: "",
+          email: "",
+          mobile: "",
+          note: "",
+        };
+
+        err.inner.forEach((validationError) => {
+          if (validationError.path) {
+            formErrors[validationError.path as keyof ContactFormValues] =
+              validationError.message;
+          }
+        });
+
+        setErrors(formErrors);
+      } else {
+        console.error(err);
+        alert("Something went wrong. Please try again.");
+      }
     } finally {
       setSubmitting(false);
     }
@@ -142,10 +268,17 @@ const ContactInfoSection: React.FC = () => {
   };
 
   return (
-    <Box component="section" sx={{ bgcolor: INK, pt: { xs: 3, md: 4 }, pb: { xs: 6, md: 9 } }}>
+    <Box
+      component="section"
+      sx={{ bgcolor: INK, pt: { xs: 3, md: 4 }, pb: { xs: 6, md: 9 } }}
+    >
       <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
         {/* ================= TOP: info list (left) + form (right) ================= */}
-        <Grid container spacing={{ xs: 5, md: 6 }} sx={{ mb: { xs: 5, md: 7 } }}>
+        <Grid
+          container
+          spacing={{ xs: 5, md: 6 }}
+          sx={{ mb: { xs: 5, md: 7 } }}
+        >
           {/* ---------------- LEFT: info list ---------------- */}
           <Grid size={{ xs: 12, md: 6, lg: 5 }}>
             <Box
@@ -181,15 +314,18 @@ const ContactInfoSection: React.FC = () => {
                 Contact Information
               </Typography>
 
-              <InfoRow icon={<PhoneIcon fontSize="inherit" />} label="Phone No.">
+              <InfoRow
+                icon={<PhoneIcon fontSize="inherit" />}
+                label="Phone No."
+              >
                 +91 94999 53256
               </InfoRow>
               <InfoRow icon={<EmailIcon fontSize="inherit" />} label="E-mail">
                 info@tito.org.in
               </InfoRow>
               <InfoRow icon={<PlaceIcon fontSize="inherit" />} label="Address">
-                Chennai TITO, #5 Sundararajan Street, Abhiramapuram, Chennai
-                - 600018
+                Chennai TITO, #5 Sundararajan Street, Abhiramapuram, Chennai -
+                600018
                 <br />
                 USA - 7253 W Sunset Ave, Suite C, Springdale AR 72762.
               </InfoRow>
@@ -218,7 +354,14 @@ const ContactInfoSection: React.FC = () => {
                 height: "100%",
               }}
             >
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 0.5 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1.5,
+                  mb: 0.5,
+                }}
+              >
                 <Box
                   sx={{
                     width: 40,
@@ -256,20 +399,34 @@ const ContactInfoSection: React.FC = () => {
                 Fill in the form below and our team will get back to you.
               </Typography>
 
+              {success && (
+                <Alert
+                  severity="success"
+                  sx={{ mb: 2.5, borderRadius: "10px" }}
+                >
+                  Your message has been sent successfully. We&apos;ll get back
+                  to you soon.
+                </Alert>
+              )}
+
               <Grid container spacing={2}>
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
                     fullWidth
-                    required
+                    name="name"
                     placeholder="Your Name"
                     value={values.name}
                     onChange={handleChange("name")}
+                    error={!!errors.name}
+                    helperText={errors.name}
                     sx={fieldSx}
                     slotProps={{
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonOutlineIcon sx={{ color: GOLD, fontSize: 20 }} />
+                            <PersonOutlineIcon
+                              sx={{ color: GOLD, fontSize: 20 }}
+                            />
                           </InputAdornment>
                         ),
                       },
@@ -279,17 +436,20 @@ const ContactInfoSection: React.FC = () => {
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
                     fullWidth
-                    required
-                    type="email"
+                    name="email"
                     placeholder="Your E-mail"
                     value={values.email}
                     onChange={handleChange("email")}
+                    error={!!errors.email}
+                    helperText={errors.email}
                     sx={fieldSx}
                     slotProps={{
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <MailOutlineIcon sx={{ color: GOLD, fontSize: 20 }} />
+                            <MailOutlineIcon
+                              sx={{ color: GOLD, fontSize: 20 }}
+                            />
                           </InputAdornment>
                         ),
                       },
@@ -299,15 +459,24 @@ const ContactInfoSection: React.FC = () => {
                 <Grid size={{ xs: 12 }}>
                   <TextField
                     fullWidth
+                    name="mobile"
                     placeholder="Mobile Number"
                     value={values.mobile}
                     onChange={handleChange("mobile")}
+                    error={!!errors.mobile}
+                    helperText={errors.mobile}
                     sx={fieldSx}
                     slotProps={{
+                      htmlInput: {
+                        maxLength: 10,
+                        inputMode: "numeric",
+                      },
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PhoneIphoneIcon sx={{ color: GOLD, fontSize: 20 }} />
+                            <PhoneIphoneIcon
+                              sx={{ color: GOLD, fontSize: 20 }}
+                            />
                           </InputAdornment>
                         ),
                       },
@@ -319,14 +488,20 @@ const ContactInfoSection: React.FC = () => {
                     fullWidth
                     multiline
                     minRows={4}
+                    name="note"
                     placeholder="Leave a Note"
                     value={values.note}
                     onChange={handleChange("note")}
+                    error={!!errors.note}
+                    helperText={errors.note}
                     sx={fieldSx}
                     slotProps={{
                       input: {
                         startAdornment: (
-                          <InputAdornment position="start" sx={{ alignSelf: "flex-start", mt: 1.25 }}>
+                          <InputAdornment
+                            position="start"
+                            sx={{ alignSelf: "flex-start", mt: 1.25 }}
+                          >
                             <NotesIcon sx={{ color: GOLD, fontSize: 20 }} />
                           </InputAdornment>
                         ),
@@ -341,6 +516,7 @@ const ContactInfoSection: React.FC = () => {
                     disabled={submitting}
                     endIcon={<SendIcon />}
                     sx={{
+                      mt: 4,
                       py: 1.5,
                       borderRadius: "10px",
                       textTransform: "none",
