@@ -43,7 +43,6 @@ function useRevealOnScroll<T extends HTMLElement>(threshold = 0.15) {
     const el = ref.current;
     if (!el) return;
 
-
     if (typeof IntersectionObserver === "undefined") {
       const frameId = requestAnimationFrame(() => setVisible(true));
       return () => cancelAnimationFrame(frameId);
@@ -86,41 +85,61 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Sizing Software",
-    client: "FCC",
-    industry: "Valve Manufacturing (India)",
+    title: "Valve Sizing Application",
+    client: "Flow Control Commune (FCC)",
+    industry: "Valve Manufacturing",
     duration: "2022",
     categories: ["Enterprise Solutions"],
     tagline:
-      "An engineering sizing tool that helps valve manufacturing teams calculate and validate specifications faster and with fewer errors.",
+      "An engineering application for control valve sizing, CFD analysis, and noise prediction to support accurate valve selection and performance evaluation.",
+
     overview:
-      "FCC needed a way to move valve sizing calculations out of scattered spreadsheets and into a single, reliable tool their engineers could trust. We built a desktop-friendly sizing application that encodes the manufacturer's own engineering formulas, validates inputs as they're entered, and produces consistent, exportable sizing reports — cutting down the manual back-and-forth between engineering and sales teams.",
+      "Developed a web-based Valve Sizing Application for Flow Control Commune (FCC), a leading control valve manufacturer in Chennai. The platform enables engineers to perform valve sizing calculations, Computational Fluid Dynamics (CFD) analysis, and noise prediction using industry-standard engineering formulas. Built with Python and Flask, the application simplifies complex engineering calculations, improves sizing accuracy, and assists engineering teams in evaluating valve performance for industrial process applications.",
+
     highlights: [
-      "Replaced spreadsheet-based sizing calculations with a validated, repeatable workflow",
-      "Built-in checks catch invalid input combinations before they reach a quote",
-      "Exportable reports standardized across the engineering team",
+      "Automated control valve sizing using engineering calculations",
+      "Integrated CFD and noise analysis for valve performance evaluation",
+      "Web-based engineering platform built with Python and Flask",
+      "Improved engineering accuracy while reducing manual calculation effort",
+      "Responsive interface for configuring and validating valve specifications",
     ],
-    techStack: [".NET", "C#", "SQL Server", "WinForms"],
-    image: "/img/contact/control-valve.png",
+
+    techStack: ["Python", "Flask", "CFD", "Engineering Calculations"],
+
+    image: "/img/projects/control-valve.webp",
   },
   {
     id: 2,
-    title: "Data Normalization Platform",
-    client: "Nitto",
-    industry: "RO Membrane Manufacturing (MNC)",
+    title: "Nitto Hydra Save",
+    client: "Nitto Hydranautics",
+    industry: "Water Treatment & Industrial Manufacturing",
     duration: "2023 – 2025",
-    categories: ["Data Engineering", "Enterprise Solutions"],
+    categories: ["Enterprise Solutions", "Data Engineering"],
     tagline:
-      "A large-scale data normalization pipeline that reconciles manufacturing data across regions into one consistent, query-ready format.",
+      "An engineering platform for water treatment plant configuration, PLC data visualization, and ERP-based operational management.",
+
     overview:
-      "Nitto's RO membrane manufacturing operations produced data across multiple regional systems, each with its own formats, units, and naming conventions. Over a multi-year engagement, we designed and progressively expanded a normalization pipeline that ingests raw manufacturing and quality data, reconciles it against a shared schema, and makes it queryable for reporting and analytics teams — without requiring the source systems themselves to change.",
+      "Nitto Hydra Save is an engineering platform developed for Nitto Hydranautics to simplify water treatment plant configuration and operational monitoring. The application enables engineers to configure plant parameters, capture and analyze PLC-generated operational data, and visualize complex metrics through interactive charts and tabular reports. The platform also includes ERP capabilities for managing engineering workflows while providing real-time insights for plant assessment and performance analysis.",
+
     highlights: [
-      "Unified data from multiple regional plants into one consistent schema",
-      "Pipeline built to scale as new data sources were added over the engagement",
-      "Reduced manual reconciliation work for downstream reporting teams",
+      "Interactive dashboards with graphical and tabular visualization of PLC operational data",
+      "Water treatment plant configuration and engineering workflow management",
+      "ERP modules with responsive UI, routing, and comprehensive form validation",
+      "Backend API development using Django with reliable frontend integration",
+      "Bug fixing, code reviews, and modular architecture for maintainability and scalability",
     ],
-    techStack: ["Python", "Apache Airflow", "PostgreSQL", "AWS"],
-    image: "/img/contact/data-normalaization.png",
+
+    techStack: [
+      "Next.js",
+      "Material UI",
+      "React.js",
+      "Python",
+      "Django",
+      "MySQL",
+      "Microsoft SQL Server",
+    ],
+    image: "/img/projects/data-normalaization.webp",
+  
   },
   // {
   //   id: 3,
@@ -144,7 +163,7 @@ const PROJECTS: Project[] = [
   //     "Kubernetes",
   //     "Cloud SQL",
   //   ],
-  //   image: "/img/contact/image_2.jpg",
+  //   image: "/img/projects/image_2.jpg",
   // },
   {
     id: 4,
@@ -154,128 +173,174 @@ const PROJECTS: Project[] = [
     duration: "2024 – 2026",
     categories: ["AI Solutions", "Web Application"],
     tagline:
-      "An AI-powered legal product for case tracking, document management, and client communication built for a US legal-tech startup.",
+      "An AI-powered LegalTech platform for intelligent contract analysis, secure document management, and conversational document search.",
+
     overview:
-      "Legaleey set out to give legal teams a single system for managing cases, documents, billing, and client communication, backed by AI assistance rather than bolted onto it. As an ongoing engagement, we've built out the core case and document management platform and are progressively layering in AI-assisted document review and workflow automation as the product matures.",
+      "Legaleey is an AI-powered LegalTech SaaS platform built to help legal professionals and businesses securely manage, organize, analyze, and search legal documents. Powered by the LLaMA 4 model and a conversational AI interface, the platform streamlines contract review through intelligent document analysis, custom extraction templates, full-text search, and secure cloud-based document management. The application leverages AWS services for authentication, file storage, and scalable cloud infrastructure while delivering a modern, responsive user experience.",
+
     highlights: [
-      "Centralized case tracking, document management, and billing in one platform",
-      "AI-assisted document review layered into existing legal workflows",
-      "Built as a long-term, iteratively evolving product rather than a one-off delivery",
+      "AI-powered contract analysis using conversational AI and the LLaMA 4 model",
+      "Secure document management with cloud-based storage and advanced full-text search",
+      "Custom legal extraction templates for faster document review and information retrieval",
+      "AWS-powered authentication, secure file uploads, and scalable cloud infrastructure",
+      "Responsive full-stack application built with modern web technologies",
     ],
-    techStack: ["Next.js", "TypeScript", "Prisma", "MySQL", "AWS"],
-    image: "/img/contact/legaleey.png",
+
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "React Context",
+      "AWS Amplify",
+      "AWS Cognito",
+      "AWS S3",
+      "AWS Lambda",
+      "IAM",
+      "Drizzle ORM",
+      "Neon PostgreSQL",
+      "LLaMA 4",
+      "CI/CD",
+      "OCR",
+    ],
+
+    image: "/img/projects/legaleey.webp",
   },
   {
     id: 5,
     title: "Portal26",
     client: "US Cybersecurity Company",
-    industry: "Cybersecurity / QA Automation",
-    duration: "2025",
-    categories: ["AI Solutions", "Enterprise Solutions"],
+    industry: "Cybersecurity / Test Automation",
+    duration: "June 2025 – December 2025",
+    categories: ["Security", "Enterprise Solutions"],
     tagline:
-      "AI-assisted test automation tooling built for a US cybersecurity company to speed up and broaden their QA coverage.",
+      "A security testing and automation engagement for an enterprise platform protecting AI-powered web and desktop applications.",
     overview:
-      "This cybersecurity company needed to expand automated test coverage without proportionally expanding their QA team. We built AI-assisted automation tooling that generates and maintains test cases from existing product flows, flags flaky or redundant tests, and integrates directly into their existing CI pipeline.",
+      "Contributed to Portal26, an enterprise cybersecurity platform that securely routes application traffic through a local endpoint agent to the GenAI Gateway for proxy-based inspection and prompt logging. The engagement involved validating AI-enabled applications across Windows environments through comprehensive manual testing and Python-based automation using Playwright. Testing covered AI tools such as OpenAI, Claude, Gemini, and GitHub Copilot while ensuring secure traffic routing, prompt logging, and reliable platform behavior.",
     highlights: [
-      "AI-assisted generation and maintenance of automated test cases",
-      "Integrated directly into the client's existing CI/CD pipeline",
-      "Reduced manual effort required to keep test coverage current",
+      "Manual testing of AI-powered applications across Chrome, Edge, and Firefox on Windows",
+      "Python and Playwright automation framework with reusable, JSON-driven test execution",
+      "Validation of prompt logging, security headers, and endpoint traffic routing",
+      "GitHub Actions integration with consolidated HTML reporting for automated test execution",
     ],
-    techStack: ["Python", "Playwright", "OpenAI API", "GitHub Actions"],
-    image: "/img/contact/portal-26.png",
+    techStack: [
+      "Python",
+      "Playwright",
+      "GitHub Actions",
+      "Excel",
+      "OpenAI",
+      "Claude",
+      "Gemini",
+      "GitHub Copilot",
+    ],
+    image: "/img/projects/portal-26.webp",
   },
   {
     id: 6,
-    title: "VAPT Security Assessment",
+    title: "Application Security Assessment",
     client: "Indian Banking-Domain IT Company",
-    industry: "Banking & Finance / Security",
+    industry: "Banking & Finance / Cybersecurity",
     duration: "2025",
     categories: ["Security", "Enterprise Solutions"],
     tagline:
-      "A vulnerability assessment and penetration testing engagement for a banking-domain IT company in India.",
+      "A comprehensive application security assessment covering web, mobile, APIs, and WhatsApp-integrated banking services.",
     overview:
-      "Ahead of a compliance milestone, this banking-domain IT company needed an independent security assessment of their applications and infrastructure. We conducted a structured VAPT engagement — covering application, network, and infrastructure layers — and delivered a prioritized remediation report the client's internal security team used to close out findings ahead of their deadline.",
+      "Conducted a comprehensive Vulnerability Assessment and Penetration Testing (VAPT) engagement for a banking platform covering up to 20 functional modules across web, Android, iOS, and WhatsApp-integrated services. The assessment focused on identifying security vulnerabilities, validating exploitability, assessing runtime behavior, testing APIs, and delivering prioritized remediation guidance to improve the overall security posture of the banking ecosystem.",
     highlights: [
-      "Full VAPT coverage across application, network, and infrastructure layers",
-      "Findings prioritized by severity and exploitability, not just raw count",
-      "Remediation guidance delivered in a format the internal team could act on directly",
+      "Application security assessment across web, Android, iOS, and WhatsApp platforms",
+      "Threat surface analysis, manual penetration testing, and API security validation",
+      "Dynamic runtime analysis, security misconfiguration review, and risk categorization",
+      "Detailed security reporting with remediation recommendations and retesting support",
     ],
-    techStack: ["Burp Suite", "Nmap", "Metasploit", "OWASP ZAP"],
-    image: "/img/contact/data-normalaization.png",
+    techStack: [
+      "Burp Suite",
+      "OWASP ZAP",
+      "Nmap",
+      "Postman",
+      "Mobile Security Testing",
+    ],
+    image: "/img/projects/vapt.webp",
   },
   {
     id: 7,
-    title: "Banking Product Outsourcing",
+    title: "Digital Banking Platform Development",
     client: "Indian Banking-Domain IT Company",
     industry: "Banking & Finance",
     duration: "2026",
     categories: ["Enterprise Solutions", "Web Application"],
     tagline:
-      "An outsourced product development engagement supporting a banking-domain IT company's product roadmap.",
+      "An enterprise banking application developed to support secure digital banking operations and customer-facing financial services.",
     overview:
-      "This engagement covers outsourced development for a banking product line, with our team working as an extension of the client's own to deliver features against their existing roadmap and compliance requirements — from planning through delivery.",
+      "Worked as an extended engineering team to develop and enhance an enterprise digital banking platform. The engagement focused on building scalable banking modules, integrating secure backend services, improving user experience, and delivering features aligned with the client's product roadmap and banking compliance standards.",
     highlights: [
-      "Working as an extension of the client's product and engineering teams",
-      "Delivery aligned to the client's existing banking compliance requirements",
-      "Ongoing engagement covering planning through release",
+      "Development of enterprise banking modules and customer-facing features",
+      "Secure backend integration with scalable application architecture",
+      "Responsive web interfaces for banking operations and administration",
+      "Continuous feature enhancements, testing, and production support",
     ],
-    techStack: ["Java", "Spring Boot", "Oracle DB", "Angular"],
-    image: "/img/contact/image_2.jpg",
+    techStack: ["Java", "Spring Boot", "Oracle Database", "Angular"],
+    image: "/img/projects/bank.webp",
   },
   {
     id: 8,
-    title: "Baskara Energy",
-    client: "Baskara Energy",
-    industry: "Renewable Energy",
-    duration: "Website",
+    title: "Bhaskara Energy System LLP",
+    client: "Bhaskara Energy System LLP",
+    industry: "Industrial Engineering & Process Equipment",
+    duration: "Corporate Website",
     categories: ["Web Application"],
     tagline:
-      "A corporate website for a renewable energy company, built to present their services and projects clearly to prospective clients.",
+      "A professional corporate website showcasing Bhaskara Energy's expertise in process equipment, application engineering, CFD analysis, and industrial solutions for critical process industries.",
     overview:
-      "Baskara Energy needed a web presence that reflected the scale and credibility of their renewable energy projects. We designed and built a corporate website covering their services, project portfolio, and company information, with a content structure their team can update independently.",
+      "Bhaskara Energy System LLP required a modern corporate website to strengthen its digital presence and showcase over 25 years of expertise in supplying process equipment for petroleum refineries, petrochemical, chemical, fertilizer, food, and other industrial sectors. The website highlights the company's engineering capabilities, represented global brands, CFD services, industry expertise, and end-to-end support—from application engineering and commissioning to customer training and after-sales service.",
     highlights: [
-      "Clear presentation of services and project portfolio",
-      "Content structure the client's team can update without developer support",
-      "Fast-loading, responsive design across devices",
+      "Professional presentation of industrial solutions and engineering expertise",
+      "Dedicated sections for services, CFD analysis, industries served, and represented global brands",
+      "Responsive, user-friendly design optimized for desktop, tablet, and mobile devices",
+      "Clear navigation with structured company, service, and client information",
+      "Built to strengthen the company's digital presence and generate business enquiries",
     ],
-    techStack: ["Next.js", "Tailwind CSS", "Strapi", "Vercel"],
-    image: "/img/contact/work-1.jpg",
+    techStack: ["HTML5", "CSS3", "Bootstrap 5", "JavaScript"],
+    image: "/img/projects/baskara.webp",
   },
   {
     id: 9,
     title: "SpudWeb",
     client: "SpudWeb",
-    industry: "Food & Restaurant",
-    duration: "Website",
+    industry: "IT Infrastructure & Cloud Services",
+    duration: "Corporate Website",
     categories: ["Web Application"],
     tagline:
-      "A restaurant-facing website for SpudWeb, presenting their menu, ordering information, and brand online.",
+      "A technology-focused corporate website presenting SpudWeb's 5C Framework—Components, Cloud, Connectivity, Consulting, and Cybersecurity—with a clean, modern user experience.",
     overview:
-      "SpudWeb needed a website that matched the experience of their food brand — clear menu presentation, straightforward ordering information, and a design that felt as inviting online as the food itself.",
+      "SpudWeb required a responsive corporate website to highlight its technology solutions, service offerings, industry expertise, and trusted partnerships. The website was designed with a clean, modern interface that strengthens the company's digital presence while making it easy for visitors to explore services and contact the team.",
     highlights: [
-      "Menu and ordering information presented clearly for customers",
-      "Design built to reflect the SpudWeb brand identity",
-      "Fully responsive across mobile and desktop",
+      "Professional corporate website showcasing IT infrastructure and cloud services",
+      "Responsive design optimized for desktop, tablet, and mobile devices",
+      "Service-focused layout with clear navigation and engaging user experience",
+      "Modern UI aligned with the company's technology-driven brand identity",
+      "Fast-loading static website with clean and maintainable code",
     ],
-    techStack: ["Next.js", "Tailwind CSS", "Node.js"],
-    image: "/img/contact/control-valve.png",
+    techStack: ["HTML5", "CSS3", "Bootstrap 5", "JavaScript"],
+    image: "/img/projects/spudweb.webp",
   },
   {
     id: 10,
     title: "Menmai Foods",
     client: "Menmai Foods",
-    industry: "Web Application",
+    industry: "E-Commerce — Food Retail",
     duration: "Website",
     categories: ["Web Application"],
-    tagline: "A website engagement delivered for Rumango.",
+    tagline:
+      "An e-commerce storefront for food retail, built for browsing, ordering, and fast checkout on any device.",
     overview:
-      "As part of our web application work, we delivered a website engagement for Rumango, covering the design and development of their online presence.",
+      "MenmaiFoods needed an online store that felt as good as walking into the shop — clear product presentation, fast browsing, and a checkout flow with no friction. We built a full e-commerce platform covering catalog management, cart and checkout, and order tracking, backed by an admin panel the team runs day to day.",
     highlights: [
-      "Custom website design and development",
-      "Responsive layout across devices",
+      "Full storefront with catalog, cart, and secure checkout",
+      "Order tracking and notifications from purchase to delivery",
+      "Admin panel for inventory, pricing, and promotions",
     ],
-    techStack: ["Next.js", "Tailwind CSS"],
-    image: "/img/contact/menmai-foods.png",
+    techStack: ["Next.js", "TypeScript", "MySQL", "Prisma"],
+    image: "/img/projects/menmai-foods.webp",
   },
 ];
 
@@ -284,7 +349,7 @@ const FILTERS = [
   "Web Application",
   "Enterprise Solutions",
   "AI Solutions",
-  "Cloud Solutions",
+  // "Cloud Solutions",
   "Data Engineering",
   "Security",
 ];
@@ -610,7 +675,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({
         useFlexGap
         sx={{ pt: 0.5, flexWrap: "wrap" }}
       >
-        {project.techStack.slice(0, 4).map((t) => (
+        {project.techStack.slice(0, 20).map((t) => (
           <Chip
             key={t}
             label={t}
@@ -729,8 +794,8 @@ const OurProjects: React.FC = () => {
       sx={{
         bgcolor: INK,
         width: "100%",
-        pt: { xs: 10, md: 13 },   // reduced top padding
-        pb: { xs: 7, md: 6 },   // keep bottom padding
+        pt: { xs: 10, md: 13 }, // reduced top padding
+        pb: { xs: 7, md: 6 }, // keep bottom padding
       }}
     >
       <GlobalStyles
