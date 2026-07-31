@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/footer/page";
+import Header from "./components/header/page";
 
 export const metadata: Metadata = {
   title: "TITO IT Solutions | Chennai",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         <main>{children}</main>
         <Footer />
       </body>

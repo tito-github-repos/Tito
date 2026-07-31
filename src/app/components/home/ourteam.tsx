@@ -1000,6 +1000,7 @@ export default function TeamSectionHeader() {
           py: { xs: 5, md: 8 },
           backgroundColor: "var(--INK)",
           borderBottom: "1px solid rgba(205, 160, 106, 0.35)",
+          scrollMarginTop: { xs: "64px", md: "76px" },
         }}
       >
         <SectionHeader />

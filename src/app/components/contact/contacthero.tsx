@@ -14,7 +14,7 @@ const ContactHero: React.FC = () => {
         display: "flex",
         alignItems: "center",
         bgcolor: "#0b0b0c",
-        minHeight: { xs: 280, sm: 320, md: 380, lg: 420, xl: 440 },
+        minHeight: { xs: 450, lg: 480 },
       }}
     >
       {/* Background image */}

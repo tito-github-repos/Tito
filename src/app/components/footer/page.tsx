@@ -9,8 +9,10 @@ import {
   Stack,
   Typography,
   Link as MuiLink,
+  Collapse,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import Link from "next/link";
 
 import EmailRounded from "@mui/icons-material/EmailRounded";
 import CallRounded from "@mui/icons-material/CallRounded";
@@ -18,6 +20,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
+import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 
 // ---------------------------------------------------------------------------
 // Palette
@@ -89,6 +92,67 @@ function FooterColumnTitle({ children }: { children: React.ReactNode }) {
       <Box
         sx={{ width: 26, height: 2, bgcolor: "var(--GOLD)", borderRadius: 1 }}
       />
+    </Box>
+  );
+}
+
+// On desktop: plain title + content, always visible, same as before.
+// On mobile: an accordion — tap the title row to expand/collapse the content.
+function FooterSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [open, setOpen] = React.useState(false);
+
+  if (!isMobile) {
+    return (
+      <Box>
+        <FooterColumnTitle>{title}</FooterColumnTitle>
+        {children}
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={{ borderBottom: "1px solid", borderColor: BORDER }}>
+      <Stack
+        direction="row"
+        onClick={() => setOpen((o) => !o)}
+        sx={{
+          alignItems: "center",
+          justifyContent: "space-between",
+          py: 1.75,
+          cursor: "pointer",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: 1.2,
+            color: "var(--GOLD)",
+            textTransform: "uppercase",
+          }}
+        >
+          {title}
+        </Typography>
+        <ExpandMoreRounded
+          sx={{
+            color: "var(--GOLD)",
+            transition: "transform 0.25s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        />
+      </Stack>
+
+      <Collapse in={open} timeout={220}>
+        <Box sx={{ pb: 2 }}>{children}</Box>
+      </Collapse>
     </Box>
   );
 }
@@ -204,15 +268,14 @@ export default function Footer() {
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              sm: "1fr 1fr",
               md: "1.4fr 1fr 1fr 1fr",
             },
-            gap: { xs: 4, md: 3 },
+            gap: { xs: 0, md: 3 },
           }}
         >
           {/* Logo + tagline */}
-          <Box>
-            <Link
+          <Box sx={{ mb: { xs: 3, md: 0 } }}>
+            <NextLink
               href="/"
               style={{ textDecoration: "none", display: "inline-block" }}
             >
@@ -240,7 +303,7 @@ export default function Footer() {
                   }}
                 />
               </Box>
-            </Link>
+            </NextLink>
 
             <Typography
               sx={{
@@ -256,53 +319,53 @@ export default function Footer() {
             </Typography>
           </Box>
 
-          {/* Company */}
-          <Box>
-            <FooterColumnTitle>Company</FooterColumnTitle>
+          {/* Company — accordion on mobile, plain column on desktop */}
+          <FooterSection title="Company">
             {companyLinks.map((link) => (
               <FooterLink key={link.label} href={link.href}>
                 {link.label}
               </FooterLink>
             ))}
-          </Box>
+          </FooterSection>
 
-          {/* Services */}
-          <Box>
-            <FooterColumnTitle>Services</FooterColumnTitle>
+          {/* Services — accordion on mobile, plain column on desktop */}
+          <FooterSection title="Services">
             {serviceLinks.map((link) => (
               <FooterLink key={link.label} href={link.href}>
                 {link.label}
               </FooterLink>
             ))}
-          </Box>
+          </FooterSection>
 
-          {/* Connect — email, phone, then social icons below */}
+          {/* Connect — accordion holds only email + phone on mobile.
+              "Follow us on" + social icons sit outside it, always visible. */}
           <Box>
-            <FooterColumnTitle>Connect</FooterColumnTitle>
+            <FooterSection title="Connect">
+              <Stack
+                direction="row"
+                spacing={1.25}
+                sx={{ mb: 1.5, alignItems: "center" }}
+              >
+                <EmailRounded sx={{ fontSize: 18, color: "var(--GOLD)" }} />
+                <Typography sx={{ fontSize: 14, color: TEXT_MUTED }}>
+                  info@tito.org.in
+                </Typography>
+              </Stack>
 
-            <Stack
-              direction="row"
-              spacing={1.25}
-              sx={{ mb: 1.5, alignItems: "center" }}
-            >
-              <EmailRounded sx={{ fontSize: 18, color: "var(--GOLD)" }} />
-              <Typography sx={{ fontSize: 14, color: TEXT_MUTED }}>
-                info@tito.org.in
-              </Typography>
-            </Stack>
+              <Stack
+                direction="row"
+                spacing={1.25}
+                sx={{ alignItems: "center" }}
+              >
+                <CallRounded sx={{ fontSize: 18, color: "var(--GOLD)" }} />
+                <Typography sx={{ fontSize: 14, color: TEXT_MUTED }}>
+                  +91 9499953256
+                </Typography>
+              </Stack>
+            </FooterSection>
 
-            <Stack
-              direction="row"
-              spacing={1.25}
-              sx={{ mb: 2.5, alignItems: "center" }}
-            >
-              <CallRounded sx={{ fontSize: 18, color: "var(--GOLD)" }} />
-              <Typography sx={{ fontSize: 14, color: TEXT_MUTED }}>
-                +91 9499953256
-              </Typography>
-            </Stack>
-
-            <Box sx={{ mb: 1 }}>
+            {/* Always visible — not part of the collapsible section */}
+            <Box sx={{ mt: { xs: 2.5, md: 2.5 } }}>
               <Typography
                 sx={{
                   fontSize: 14,
@@ -314,18 +377,18 @@ export default function Footer() {
               >
                 Follow us on
               </Typography>
-            </Box>
 
-            <Stack direction="row" spacing={1.25}>
-              {socialLinks.map((social) => (
-                <SocialIcon key={social.label} {...social} />
-              ))}
-            </Stack>
+              <Stack direction="row" spacing={1.25}>
+                {socialLinks.map((social) => (
+                  <SocialIcon key={social.label} {...social} />
+                ))}
+              </Stack>
+            </Box>
           </Box>
         </Box>
 
         {/* divider */}
-        <Box sx={{ height: "1px", bgcolor: BORDER, my: { xs: 4, md: 5 } }} />
+        <Box sx={{ height: "1px", bgcolor: BORDER, my: { xs: 3, md: 5 } }} />
 
         {/* bottom bar */}
         <Stack

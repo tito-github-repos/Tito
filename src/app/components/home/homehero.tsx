@@ -33,11 +33,9 @@ const HomeHero: React.FC = () => {
         width: "100%",
 
         /* Reduced hero height */
-        minHeight: {
-          xs: 360,
-          sm: 400,
-          md: 440,
-          lg: 480,
+        minHeight: { 
+          xs: 560,
+          lg: 580,
         },
 
         display: "flex",
