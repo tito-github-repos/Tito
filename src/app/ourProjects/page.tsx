@@ -31,8 +31,6 @@ const TEXT = "#f5f4f2";
 const TEXT_MUTED = "rgba(245, 244, 242, 0.7)";
 const BORDER = "rgba(255,255,255,0.08)";
 
-const PLACEHOLDER_IMG = "/img/contact/hero-bg1.png";
-
 /* ------------------------------------------------------------------ */
 /* Scroll-reveal hook — fades/rises each row in once as it enters view */
 /* ------------------------------------------------------------------ */
@@ -45,7 +43,7 @@ function useRevealOnScroll<T extends HTMLElement>(threshold = 0.15) {
     const el = ref.current;
     if (!el) return;
 
-   
+
     if (typeof IntersectionObserver === "undefined") {
       const frameId = requestAnimationFrame(() => setVisible(true));
       return () => cancelAnimationFrame(frameId);
@@ -103,7 +101,7 @@ const PROJECTS: Project[] = [
       "Exportable reports standardized across the engineering team",
     ],
     techStack: [".NET", "C#", "SQL Server", "WinForms"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/control-valve.png",
   },
   {
     id: 2,
@@ -122,32 +120,32 @@ const PROJECTS: Project[] = [
       "Reduced manual reconciliation work for downstream reporting teams",
     ],
     techStack: ["Python", "Apache Airflow", "PostgreSQL", "AWS"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/data-normalaization.png",
   },
-  {
-    id: 3,
-    title: "GCP Proof of Concept",
-    client: "Confidential US Client",
-    industry: "Enterprise Cloud",
-    duration: "2023",
-    categories: ["Cloud Solutions"],
-    tagline:
-      "A proof of concept demonstrating a Google Cloud migration path for a US company evaluating a move off legacy infrastructure.",
-    overview:
-      "Before committing to a full migration, this client wanted evidence that their core workloads would perform well on Google Cloud Platform. We scoped and built a focused proof of concept covering the client's most critical services, benchmarked performance and cost against their existing setup, and documented a migration path the client's internal team could execute against with confidence.",
-    highlights: [
-      "Validated feasibility of migrating core workloads to GCP",
-      "Delivered a cost and performance comparison against the existing setup",
-      "Produced a migration roadmap for the client's internal engineering team",
-    ],
-    techStack: [
-      "Google Cloud Platform",
-      "Terraform",
-      "Kubernetes",
-      "Cloud SQL",
-    ],
-    image: PLACEHOLDER_IMG,
-  },
+  // {
+  //   id: 3,
+  //   title: "GCP Proof of Concept",
+  //   client: "Confidential US Client",
+  //   industry: "Enterprise Cloud",
+  //   duration: "2023",
+  //   categories: ["Cloud Solutions"],
+  //   tagline:
+  //     "A proof of concept demonstrating a Google Cloud migration path for a US company evaluating a move off legacy infrastructure.",
+  //   overview:
+  //     "Before committing to a full migration, this client wanted evidence that their core workloads would perform well on Google Cloud Platform. We scoped and built a focused proof of concept covering the client's most critical services, benchmarked performance and cost against their existing setup, and documented a migration path the client's internal team could execute against with confidence.",
+  //   highlights: [
+  //     "Validated feasibility of migrating core workloads to GCP",
+  //     "Delivered a cost and performance comparison against the existing setup",
+  //     "Produced a migration roadmap for the client's internal engineering team",
+  //   ],
+  //   techStack: [
+  //     "Google Cloud Platform",
+  //     "Terraform",
+  //     "Kubernetes",
+  //     "Cloud SQL",
+  //   ],
+  //   image: "/img/contact/image_2.jpg",
+  // },
   {
     id: 4,
     title: "Legaleey",
@@ -165,7 +163,7 @@ const PROJECTS: Project[] = [
       "Built as a long-term, iteratively evolving product rather than a one-off delivery",
     ],
     techStack: ["Next.js", "TypeScript", "Prisma", "MySQL", "AWS"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/legaleey.png",
   },
   {
     id: 5,
@@ -184,7 +182,7 @@ const PROJECTS: Project[] = [
       "Reduced manual effort required to keep test coverage current",
     ],
     techStack: ["Python", "Playwright", "OpenAI API", "GitHub Actions"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/portal-26.png",
   },
   {
     id: 6,
@@ -203,7 +201,7 @@ const PROJECTS: Project[] = [
       "Remediation guidance delivered in a format the internal team could act on directly",
     ],
     techStack: ["Burp Suite", "Nmap", "Metasploit", "OWASP ZAP"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/data-normalaization.png",
   },
   {
     id: 7,
@@ -222,7 +220,7 @@ const PROJECTS: Project[] = [
       "Ongoing engagement covering planning through release",
     ],
     techStack: ["Java", "Spring Boot", "Oracle DB", "Angular"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/image_2.jpg",
   },
   {
     id: 8,
@@ -241,7 +239,7 @@ const PROJECTS: Project[] = [
       "Fast-loading, responsive design across devices",
     ],
     techStack: ["Next.js", "Tailwind CSS", "Strapi", "Vercel"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/work-1.jpg",
   },
   {
     id: 9,
@@ -260,12 +258,12 @@ const PROJECTS: Project[] = [
       "Fully responsive across mobile and desktop",
     ],
     techStack: ["Next.js", "Tailwind CSS", "Node.js"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/control-valve.png",
   },
   {
     id: 10,
-    title: "Rumango",
-    client: "Rumango",
+    title: "Menmai Foods",
+    client: "Menmai Foods",
     industry: "Web Application",
     duration: "Website",
     categories: ["Web Application"],
@@ -277,7 +275,7 @@ const PROJECTS: Project[] = [
       "Responsive layout across devices",
     ],
     techStack: ["Next.js", "Tailwind CSS"],
-    image: PLACEHOLDER_IMG,
+    image: "/img/contact/menmai-foods.png",
   },
 ];
 
@@ -562,6 +560,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({
           width: "100%",
           height: { xs: 220, sm: 280, md: 320 },
           objectFit: "cover",
+          objectPosition: "top center",
           display: "block",
           transition: "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
           ".project-row:hover &": {
@@ -632,7 +631,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({
           />
         ))}
       </Stack>
-      <Box sx={{ pt: 1 }}>
+      {/* <Box sx={{ pt: 1 }}>
         <Button
           onClick={() => onKnowMore(project)}
           endIcon={
@@ -668,7 +667,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({
         >
           Know More
         </Button>
-      </Box>
+      </Box> */}
     </Stack>
   );
 
