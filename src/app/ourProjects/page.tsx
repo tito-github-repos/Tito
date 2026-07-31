@@ -201,6 +201,7 @@ const PROJECTS: Project[] = [
       "Neon PostgreSQL",
       "LLaMA 4",
       "CI/CD",
+      "OCR",
     ],
 
     image: "/img/projects/legaleey.webp",
