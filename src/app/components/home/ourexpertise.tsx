@@ -317,7 +317,7 @@ function CustomerCentricIllustration() {
       alt="Customer-centric focus illustration"
       sx={{
         width: "100%",
-        height: {xs: 190, md: 220},
+        height: { xs: 190, md: 220 },
         display: "block",
       }}
     />
@@ -332,7 +332,7 @@ function EndToEndIllustration() {
       alt="Customer-centric focus illustration"
       sx={{
         width: "100%",
-         height: {xs: 190, md: 220},
+        height: { xs: 190, md: 220 },
         display: "block",
       }}
     />
@@ -347,7 +347,7 @@ function InnovativeApproachIllustration() {
       alt="Customer-centric focus illustration"
       sx={{
         width: "100%",
-         height: {xs: 190, md: 220},
+        height: { xs: 190, md: 220 },
         display: "block",
       }}
     />
@@ -538,7 +538,15 @@ export default function OurExpertise() {
   ];
 
   return (
-    <Box id="expertise" component="section" sx={{ width: "100%", bgcolor: "var(--INK)" }}>
+    <Box
+      id="expertise"
+      component="section"
+      sx={{
+        width: "100%",
+        bgcolor: "var(--INK)",
+        scrollMarginTop: { xs: "64px", md: "76px" },
+      }}
+    >
       <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
         <Box
           sx={{
