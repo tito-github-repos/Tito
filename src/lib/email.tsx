@@ -18,22 +18,26 @@ interface AdminNotificationData {
 export async function sendContactAcknowledgement(
   data: ContactAcknowledgementData
 ) {
-  await resend.emails.send({
+  const response = await resend.emails.send({
     from: process.env.FROM_EMAIL!,
     to: data.email,
     subject: "We've Received Your Enquiry",
     react: <ContactAcknowledgement {...data} />,
   });
+
+  console.log("Customer Email:", response);
 }
 
 // Send notification email to the admin
 export async function sendAdminNotification(
   data: AdminNotificationData
 ) {
-  await resend.emails.send({
+  const response = await resend.emails.send({
     from: process.env.FROM_EMAIL!,
     to: process.env.ADMIN_EMAIL!,
     subject: "New Contact Enquiry",
     react: <AdminNotification {...data} />,
   });
+
+  console.log("Admin Email:", response);
 }
