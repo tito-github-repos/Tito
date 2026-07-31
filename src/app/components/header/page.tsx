@@ -66,7 +66,23 @@ const Header: React.FC = () => {
   const handleCompanyClose = () => setAnchorEl(null);
 
   const go = (path: string) => {
-    router.push(path);
+    const [target, hash] = path.split("#");
+    const targetPath = target || "/";
+
+    if (hash) {
+      if (pathname === targetPath) {
+        // already on the right page — just scroll, don't re-navigate
+        const el = document.getElementById(hash);
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", `${targetPath}#${hash}`);
+      } else {
+        // different page — navigate fresh, hash included from the start
+        router.push(`${targetPath}#${hash}`);
+      }
+    } else {
+      router.push(targetPath);
+    }
+
     handleCompanyClose();
     setMobileOpen(false);
   };
