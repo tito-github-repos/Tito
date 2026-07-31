@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import adminNotification from "@/templates/adminNotification";
-import contactAcknowledgement from "@/templates/contactAcknowledgement";
+import {
+  sendContactAcknowledgement,
+  sendAdminNotification,
+} from "@/lib/email";
 
 
 export async function POST(req: NextRequest) {
@@ -34,12 +36,14 @@ export async function POST(req: NextRequest) {
     // Send emails (Don't fail API if email sending fails)
     try {
       await Promise.all([
-        contactAcknowledgement({
-          name: enquiry.name,
+        sendContactAcknowledgement({
+           name: enquiry.name,
+           email: enquiry.email,
+
 
         }),
 
-        adminNotification({
+        sendAdminNotification({
           name: enquiry.name,
           email: enquiry.email,
           mobile: enquiry.mobile,
@@ -47,7 +51,7 @@ export async function POST(req: NextRequest) {
         }),
       ]);
     } catch (emailError) {
-      console.error("Email Sending Error:", emailError);
+      console.error("Email Sending Error:", JSON.stringify(emailError, null, 2));
     }
 
     return NextResponse.json(
@@ -56,7 +60,7 @@ export async function POST(req: NextRequest) {
         message: "Your enquiry has been submitted successfully.",
         data: enquiry,
       },
-      { status: 201 }
+      { status: 200 }
     );
   } catch (error) {
     console.error("Enquiry API Error:", error);
