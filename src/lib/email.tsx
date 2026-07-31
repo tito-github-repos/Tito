@@ -1,43 +1,39 @@
-import StudentConfirmation from "@/templates/contactAcknowledgement";
-import { resend } from "./resend";
+import ContactAcknowledgement from "@/templates/contactAcknowledgement";
 import AdminNotification from "@/templates/adminNotification";
+import { resend } from "./resend";
 
-
-
-interface StudentConfirmationData {
+interface ContactAcknowledgementData {
   name: string;
   email: string;
-  course: string;
-  workshopDate: string;
 }
 
 interface AdminNotificationData {
   name: string;
   email: string;
-  phone: string;
-  course: string;
-  workshopDate: string;
-  message?: string;
+  mobile: string;
+  note: string;
 }
 
-export async function sendStudentConfirmation(
-  data: StudentConfirmationData
+// Send acknowledgement email to the customer
+export async function sendContactAcknowledgement(
+  data: ContactAcknowledgementData
 ) {
   await resend.emails.send({
     from: process.env.FROM_EMAIL!,
     to: data.email,
-    subject: "Workshop Registration Confirmation",
-    react: <StudentConfirmation {...data} />,
+    subject: "We've Received Your Enquiry",
+    react: <ContactAcknowledgement {...data} />,
   });
 }
 
+// Send notification email to the admin
 export async function sendAdminNotification(
   data: AdminNotificationData
 ) {
   await resend.emails.send({
     from: process.env.FROM_EMAIL!,
     to: process.env.ADMIN_EMAIL!,
-    subject: "New Workshop Registration",
+    subject: "New Contact Enquiry",
     react: <AdminNotification {...data} />,
   });
 }
