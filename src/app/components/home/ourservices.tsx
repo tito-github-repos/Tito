@@ -307,6 +307,7 @@ function ServiceCard({ service }: { service: Service }) {
 export default function OurServices() {
   return (
     <Box
+      id="services"
       component="section"
       sx={{
         width: "100%",
