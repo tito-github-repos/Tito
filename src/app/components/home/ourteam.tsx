@@ -199,7 +199,7 @@ function RoleCard({ role }: { role: Role }) {
             transition: "background-color 0.25s ease, color 0.25s ease",
             "&:hover": {
               bgcolor: "rgba(205, 160, 106, 0.10)",
-            }
+            },
           }}
         >
           <Icon fontSize="medium" />
@@ -992,13 +992,14 @@ export default function TeamSectionHeader() {
   return (
     <div>
       <Box
+        id="team"
         component="section"
         sx={{
           width: "100%",
           overflow: "hidden",
           py: { xs: 5, md: 8 },
           backgroundColor: "var(--INK)",
-          borderBottom: "1px solid rgba(205, 160, 106, 0.35)"
+          borderBottom: "1px solid rgba(205, 160, 106, 0.35)",
         }}
       >
         <SectionHeader />

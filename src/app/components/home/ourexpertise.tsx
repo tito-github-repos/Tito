@@ -538,7 +538,7 @@ export default function OurExpertise() {
   ];
 
   return (
-    <Box component="section" sx={{ width: "100%", bgcolor: "var(--INK)" }}>
+    <Box id="expertise" component="section" sx={{ width: "100%", bgcolor: "var(--INK)" }}>
       <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
         <Box
           sx={{
