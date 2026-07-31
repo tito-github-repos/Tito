@@ -310,6 +310,7 @@ export default function OurServices() {
       id="services"
       component="section"
       sx={{
+        scrollMarginTop: { xs: "64px", md: "76px" },
         width: "100%",
         bgcolor: "var(--INK)",
         py: { xs: 6, md: 10 },

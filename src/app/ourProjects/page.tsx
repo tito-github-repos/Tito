@@ -730,7 +730,7 @@ const OurProjects: React.FC = () => {
       sx={{
         bgcolor: INK,
         width: "100%",
-        pt: { xs: 5, md: 5 },   // reduced top padding
+        pt: { xs: 10, md: 13 },   // reduced top padding
         pb: { xs: 7, md: 6 },   // keep bottom padding
       }}
     >
