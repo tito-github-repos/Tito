@@ -620,9 +620,7 @@ const HomeHero: React.FC = () => {
               animation: "fadeUp .9s ease .25s both",
             }}
           >
-            We help individuals and businesses grow through hands-on IT
-            training, real-world projects, and future-ready IT solutions
-            designed for today&apos;s technology landscape.
+            We support businesses  grow through future ready.....
           </Typography>
           {/* =========================
               ACTION BUTTONS
