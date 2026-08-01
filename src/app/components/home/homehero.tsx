@@ -620,7 +620,7 @@ const HomeHero: React.FC = () => {
               animation: "fadeUp .9s ease .25s both",
             }}
           >
-            We support businesses  grow through future ready.....
+            We support businesses to grow through future-ready technology solutions, specializing in custom software development, web and mobile applications, cloud services, AI-powered solutions, cybersecurity, and digital transformation to help organizations innovate with confidence.
           </Typography>
           {/* =========================
               ACTION BUTTONS
