@@ -74,7 +74,7 @@ interface Project {
   client: string;
   industry: string;
   duration: string;
-  year: string; 
+  year: string;
   categories: string[]; // used for filter chips
   tagline: string; // short line shown on the card
   overview: string; // longer paragraph shown in the modal
@@ -90,7 +90,7 @@ const PROJECTS: Project[] = [
     client: "Flow Control Commune (FCC)",
     industry: "Valve Manufacturing",
     duration: "2022",
-    year: "2022",  
+    year: "2022",
     categories: ["Enterprise Solutions"],
     tagline:
       "An engineering application for control valve sizing, CFD analysis, and noise prediction to support accurate valve selection and performance evaluation.",
@@ -115,7 +115,7 @@ const PROJECTS: Project[] = [
     title: "Data Normalization",
     client: "Nitto Hydranautics",
     industry: "Water Treatment & Industrial Manufacturing",
-    year: "2023 – 2025",  
+    year: "2023 – 2025",
     duration: "2023 – 2025",
     categories: ["Enterprise Solutions", "Data Engineering"],
     tagline:
@@ -142,14 +142,13 @@ const PROJECTS: Project[] = [
       "Mongo DB",
     ],
     image: "/img/projects/data-normalaization.webp",
-  
   },
   // {
   //   id: 3,
   //   title: "GCP Proof of Concept",
   //   client: "Confidential US Client",
   //   industry: "Enterprise Cloud",
-  
+
   //   duration: "2023",
   //   categories: ["Cloud Solutions"],
   //   tagline:
@@ -174,7 +173,7 @@ const PROJECTS: Project[] = [
     title: "AI-Powered Document Management Platform",
     client: "US Legal-Tech Startup",
     industry: "Document Management & Automation",
-    year: "2024 – 2026",  
+    year: "2024 – 2026",
     duration: "2024 – 2026",
     categories: ["AI Solutions", "Web Application"],
     tagline:
@@ -216,7 +215,7 @@ const PROJECTS: Project[] = [
     title: "Enterprise AI Security Testing & Automation Platform",
     client: "US Cybersecurity Company",
     industry: "Cybersecurity / Test Automation",
-    year: "June 2025 – December 2025",  
+    year: "June 2025 – December 2025",
     duration: "June 2025 – December 2025",
     categories: ["Security", "Enterprise Solutions"],
     tagline:
@@ -246,7 +245,7 @@ const PROJECTS: Project[] = [
     title: "Application Security Assessment",
     client: "Indian Banking-Domain IT Company",
     industry: "Banking & Finance / Cybersecurity",
-    year: "2025",  
+    year: "2025",
     duration: "2025",
     categories: ["Security", "Enterprise Solutions"],
     tagline:
@@ -265,7 +264,7 @@ const PROJECTS: Project[] = [
       "Nmap",
       "Postman",
       "Mobile Security Testing",
-      "J2EE"
+      "J2EE",
     ],
     image: "/img/projects/vapt.webp",
   },
@@ -274,7 +273,7 @@ const PROJECTS: Project[] = [
     title: "Digital Banking Platform Development",
     client: "Indian Banking-Domain IT Company",
     industry: "Banking & Finance",
-    year: "2026",  
+    year: "2026",
     duration: "2026",
     categories: ["Enterprise Solutions", "Web Application"],
     tagline:
@@ -295,7 +294,7 @@ const PROJECTS: Project[] = [
     title: "Industrial Engineering Corporate Website",
     client: "Bhaskara Energy System LLP",
     industry: "Industrial Engineering & Process Equipment",
-    year: "2023",  
+    year: "2023",
     duration: "Corporate Website",
     categories: ["Web Application"],
     tagline:
@@ -317,7 +316,7 @@ const PROJECTS: Project[] = [
     title: "IT Infrastructure & Cloud Services Website",
     client: "SpudWeb",
     industry: "IT Infrastructure & Cloud Services",
-    year: "2025",  
+    year: "2025",
     duration: "Corporate Website",
     categories: ["Web Application"],
     tagline:
@@ -340,7 +339,7 @@ const PROJECTS: Project[] = [
     client: "Menmai Foods",
     year: "2026",
     industry: "E-Commerce — Food Retail",
-      
+
     duration: "Website",
     categories: ["Web Application"],
     tagline:
@@ -352,7 +351,7 @@ const PROJECTS: Project[] = [
       "Order tracking and notifications from purchase to delivery",
       "Admin panel for inventory, pricing, and promotions",
     ],
-    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/projects/e-commerce.png",
   },
 ];
@@ -672,7 +671,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({
       >
         {project.industry}
       </Typography>
-       <Typography
+      <Typography
         sx={{
           fontSize: 12.5,
           fontWeight: 600,
@@ -817,7 +816,7 @@ const OurProjects: React.FC = () => {
       sx={{
         bgcolor: INK,
         width: "100%",
-        pt: { xs: 10, md: 13 }, // reduced top padding
+        pt: { xs: 7, md: 6 }, // reduced top padding
         pb: { xs: 7, md: 6 }, // keep bottom padding
       }}
     >
@@ -873,7 +872,7 @@ const OurProjects: React.FC = () => {
             >
               Our{" "}
               <Box component="span" sx={{ color: GOLD_SOFT }}>
-                Projects
+                Enterprise solutions
               </Box>
             </Typography>
             <Typography

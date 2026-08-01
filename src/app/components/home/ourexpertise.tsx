@@ -11,6 +11,9 @@ import BusinessCenterRounded from "@mui/icons-material/BusinessCenterRounded";
 import StarRounded from "@mui/icons-material/StarRounded";
 import ArrowForwardRounded from "@mui/icons-material/ArrowForwardRounded";
 import RocketLaunchRounded from "@mui/icons-material/RocketLaunchRounded";
+import DesktopWindowsRounded from "@mui/icons-material/DesktopWindowsRounded";
+import SmartToyRounded from "@mui/icons-material/SmartToyRounded";
+import DatasetRounded from "@mui/icons-material/DatasetRounded";
 
 const INK = "#0F172A";
 const BORDER = "rgba(255,255,255,0.09)";
@@ -41,6 +44,29 @@ const toolCategories = [
     label: "Back End Tools",
     items:
       "Postgres, MySQL, MongoDB, Go, Python, Java, C#, PHP, Django, Node, Express",
+    bg: ASH_LIGHT,
+    color: INK,
+  },
+  {
+    icon: DesktopWindowsRounded,
+    label: "Microsoft Technology",
+    items: ".NET, C#, Azure, SQL Server, Power BI, SharePoint, Power Platform",
+    bg: ASH_LIGHT,
+    color: INK,
+  },
+  {
+    icon: SmartToyRounded,
+    label: "AI Agenting Development",
+    items:
+      "LangChain, LangGraph, AutoGen, CrewAI, OpenAI, Claude, RAG, Vector DBs",
+    bg: ASH_LIGHT,
+    color: INK,
+  },
+  {
+    icon: DatasetRounded,
+    label: "Data Engineering",
+    items:
+      "ETL Pipelines, Apache Spark, Airflow, Kafka, Snowflake, Databricks, Data Warehousing",
     bg: ASH_LIGHT,
     color: INK,
   },
@@ -123,6 +149,8 @@ function HeroIllustration() {
       sx={{
         position: "relative",
         width: "100%",
+        height: "100%",
+        flex: 1,
         mx: { xs: "auto", md: 0 },
       }}
     >
@@ -132,7 +160,8 @@ function HeroIllustration() {
         alt="Our expertise illustration"
         sx={{
           width: "100%",
-          height: "auto",
+          height: "100%",
+          minHeight: { xs: 260, md: 320 },
           display: "block",
           objectFit: "contain",
         }}
@@ -143,7 +172,7 @@ function HeroIllustration() {
 
 function LeftColumn() {
   return (
-    <Box>
+    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
       <Stack
         direction="row"
         spacing={0.75}
@@ -553,7 +582,7 @@ export default function OurExpertise() {
             display: "grid",
             gridTemplateColumns: { xs: "1fr", md: "5fr 7fr" },
             gap: { xs: 5, md: 6 },
-            alignItems: "start",
+            alignItems: "stretch",
           }}
         >
           <LeftColumn />

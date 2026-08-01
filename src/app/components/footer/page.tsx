@@ -34,21 +34,19 @@ const BORDER = "rgba(255,255,255,0.09)";
 // ---------------------------------------------------------------------------
 
 const companyLinks = [
-  { label: "About Us", href: "/#team" },
-  { label: "What We Do", href: "/#expertise" },
-  { label: "Products", href: "/#products" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Services", href: "/#services" },
+  { label: "Enterprise", href: "/" },
+  { label: "Products", href: "/ourProducts" },
+  { label: "Our Company", href: "/ourCompany" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 const serviceLinks = [
-  { label: "Web Design", href: "/#services" },
-  { label: "Web App Development", href: "/#services" },
-  { label: "Mobile App Development", href: "/#services" },
-  { label: "CyberSecurity", href: "/#services" },
-  { label: "Testing & QA", href: "/#services" },
-  { label: "Digital Marketing", href: "/#services" },
+  { label: "Web Design", href: "/ourCompany#services" },
+  { label: "Web App Development", href: "/ourCompany#services" },
+  { label: "Mobile App Development", href: "/ourCompany#services" },
+  { label: "CyberSecurity", href: "/ourCompany#services" },
+  { label: "Testing & QA", href: "/ourCompany#services" },
+  { label: "Digital Marketing", href: "/ourCompany#services" },
 ];
 
 const socialLinks = [
