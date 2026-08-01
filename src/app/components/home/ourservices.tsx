@@ -35,8 +35,8 @@ const services = [
     title: "Web Application Development",
     desc: "We build robust, scalable websites using clean code and modern tools — from landing pages to full-stack apps tailored to your business needs.",
     items: [
-      "Frontend (React, Angular)",
-      "Backend (Node.js, Django)",
+      "Frontend (Next.js, React, Angular)",
+      "Backend (Node.js, Django, J2EE)",
       "CMS Integration",
       "API Development",
     ],
@@ -66,7 +66,7 @@ const services = [
       "Functional & Regression Testing",
       "Cross-Device Testing",
       "Performance Testing",
-      "Automation (Selenium, Cypress)",
+      "Automation (Playwright, Selenium, Cypress)",
     ],
   },
   {
@@ -315,6 +315,7 @@ export default function OurServices() {
         bgcolor: "var(--INK)",
         py: { xs: 6, md: 10 },
         borderBottom: "1px solid rgba(205, 160, 106, 0.35)",
+        pt: { xs: 10, md: 13 }, // reduced top padding
       }}
     >
       <SectionHeader />
