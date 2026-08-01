@@ -171,9 +171,9 @@ const PROJECTS: Project[] = [
   // },
   {
     id: 4,
-    title: "Legaleey",
+    title: "AI-Powered Document Management Platform",
     client: "US Legal-Tech Startup",
-    industry: "Legal Technology / AI",
+    industry: "Document Management & Automation",
     year: "2024 – 2026",  
     duration: "2024 – 2026",
     categories: ["AI Solutions", "Web Application"],
@@ -209,11 +209,11 @@ const PROJECTS: Project[] = [
       "OCR",
     ],
 
-    image: "/img/projects/legaleey.webp",
+    image: "/img/projects/legaleey.png",
   },
   {
     id: 5,
-    title: "Portal26",
+    title: "Enterprise AI Security Testing & Automation Platform",
     client: "US Cybersecurity Company",
     industry: "Cybersecurity / Test Automation",
     year: "June 2025 – December 2025",  
@@ -292,14 +292,14 @@ const PROJECTS: Project[] = [
   },
   {
     id: 8,
-    title: "Bhaskara Energy System LLP",
+    title: "Industrial Engineering Corporate Website",
     client: "Bhaskara Energy System LLP",
     industry: "Industrial Engineering & Process Equipment",
     year: "2023",  
     duration: "Corporate Website",
     categories: ["Web Application"],
     tagline:
-      "A professional corporate website showcasing Bhaskara Energy's expertise in process equipment, application engineering, CFD analysis, and industrial solutions for critical process industries.",
+      "A professional corporate website showcasing expertise in process equipment, application engineering, CFD analysis, and industrial solutions for critical process industries.",
     overview:
       "Bhaskara Energy System LLP required a modern corporate website to strengthen its digital presence and showcase over 25 years of expertise in supplying process equipment for petroleum refineries, petrochemical, chemical, fertilizer, food, and other industrial sectors. The website highlights the company's engineering capabilities, represented global brands, CFD services, industry expertise, and end-to-end support—from application engineering and commissioning to customer training and after-sales service.",
     highlights: [
@@ -310,18 +310,18 @@ const PROJECTS: Project[] = [
       "Built to strengthen the company's digital presence and generate business enquiries",
     ],
     techStack: ["HTML5", "CSS3", "Bootstrap 5", "JavaScript"],
-    image: "/img/projects/baskara.webp",
+    image: "/img/projects/baskara.png",
   },
   {
     id: 9,
-    title: "SpudWeb",
+    title: "IT Infrastructure & Cloud Services Website",
     client: "SpudWeb",
     industry: "IT Infrastructure & Cloud Services",
     year: "2025",  
     duration: "Corporate Website",
     categories: ["Web Application"],
     tagline:
-      "A technology-focused corporate website presenting SpudWeb's 5C Framework—Components, Cloud, Connectivity, Consulting, and Cybersecurity—with a clean, modern user experience.",
+      "A technology-focused on 5C Framework—Components, Cloud, Connectivity, Consulting, and Cybersecurity—with a clean, modern user experience.",
     overview:
       "SpudWeb required a responsive corporate website to highlight its technology solutions, service offerings, industry expertise, and trusted partnerships. The website was designed with a clean, modern interface that strengthens the company's digital presence while making it easy for visitors to explore services and contact the team.",
     highlights: [
@@ -332,11 +332,11 @@ const PROJECTS: Project[] = [
       "Fast-loading static website with clean and maintainable code",
     ],
     techStack: ["HTML5", "CSS3", "Bootstrap 5", "JavaScript"],
-    image: "/img/projects/spudweb.webp",
+    image: "/img/projects/spudweb2.png",
   },
   {
     id: 10,
-    title: "Menmai Foods",
+    title: "E-Commerce Food Ordering Platform",
     client: "Menmai Foods",
     year: "2026",
     industry: "E-Commerce — Food Retail",
@@ -353,7 +353,7 @@ const PROJECTS: Project[] = [
       "Admin panel for inventory, pricing, and promotions",
     ],
     techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
-    image: "/img/projects/menmai-foods.webp",
+    image: "/img/projects/e-commerce.png",
   },
 ];
 
