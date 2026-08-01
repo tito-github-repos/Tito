@@ -20,7 +20,7 @@ const ContactHero: React.FC = () => {
       {/* Background image */}
       <Box
         component="img"
-        src="/img/contact/bg-img.png"
+        src="/img/contact/bg-img.webp"
         alt=""
         aria-hidden="true"
         sx={{

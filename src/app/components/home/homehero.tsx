@@ -207,7 +207,7 @@ const HomeHero: React.FC = () => {
           position: "absolute",
           inset: 0,
 
-          backgroundImage: "url('/img/contact/bg-img2.png')",
+          backgroundImage: "url('/img/contact/bg-img2.webp')",
 
           backgroundSize: "cover",
 
