@@ -7,9 +7,10 @@ export default function Home() {
   return (
     <>
       <Homehero />
-      <OurTeamSection />
       <OurServices />
+      <OurTeamSection />
       <OurExpertise />
+       
     </>
   );
 }

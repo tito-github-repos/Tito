@@ -35,8 +35,8 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   { label: "Services", path: "/#services" },
-  { label: "Projects", path: "/#projects" },
-  { label: "Products", path: "/#products" },
+  { label: "Projects", path: "/ourProjects" },
+  { label: "Products", path: "/ourProducts" },
 ];
 
 const COMPANY_LINKS: NavLink[] = [

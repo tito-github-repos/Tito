@@ -13,14 +13,13 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutlined";
 import { useRouter } from "next/navigation";
 
-
 const GOLD = "#cda06a";
 const GOLD_SOFT = "#e8caa0";
 const TEXT = "#f5f4f2";
 const TEXT_MUTED = "rgba(245,244,242,.72)";
 
 const HomeHero: React.FC = () => {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <Box
       component="section"
@@ -33,7 +32,7 @@ const HomeHero: React.FC = () => {
         width: "100%",
 
         /* Reduced hero height */
-        minHeight: { 
+        minHeight: {
           xs: 560,
           lg: 580,
         },
@@ -207,7 +206,7 @@ const HomeHero: React.FC = () => {
           position: "absolute",
           inset: 0,
 
-          backgroundImage: "url('/img/contact/bg-img2.png')",
+          backgroundImage: "url('/img/contact/bg-img2.webp')",
 
           backgroundSize: "cover",
 
@@ -643,7 +642,7 @@ const HomeHero: React.FC = () => {
             {/* Primary Button */}
 
             <Button
-             onClick={() => router.push("/contact")}
+              onClick={() => router.push("/contact")}
               endIcon={<ArrowForwardIcon />}
               sx={{
                 minWidth: 170,
@@ -683,6 +682,11 @@ const HomeHero: React.FC = () => {
 
             <Button
               startIcon={<PlayCircleOutlineIcon />}
+              onClick={() => {
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
               sx={{
                 minWidth: 180,
 

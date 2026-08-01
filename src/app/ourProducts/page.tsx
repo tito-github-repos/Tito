@@ -177,7 +177,7 @@ const PRODUCTS: Product[] = [
       "Subject and topic-wise performance analytics",
       "Question bank with difficulty-based practice sets",
     ],
-    techStack: ["Next.js", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/prelimspass.webp",
   },
   {
@@ -196,7 +196,7 @@ const PRODUCTS: Product[] = [
       "Playful, reward-driven progression to keep kids engaged",
       "Parent dashboard to track focus, memory, and problem-solving growth",
     ],
-    techStack: ["Next.js", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/2212.webp",
   },
   {
@@ -215,7 +215,7 @@ const PRODUCTS: Product[] = [
       "Order tracking and notifications from purchase to delivery",
       "Admin panel for inventory, pricing, and promotions",
     ],
-    techStack: ["Next.js", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/menmaifoods.webp",
   },
   {
@@ -234,7 +234,7 @@ const PRODUCTS: Product[] = [
       "Streak tracking and reminders to build consistent habits",
       "Progress history so users can see improvement over time",
     ],
-    techStack: ["Next.js", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/drilldaily.webp",
   },
   {
@@ -253,7 +253,7 @@ const PRODUCTS: Product[] = [
       "Built-in booking, scheduling, and payment collection",
       "Instructor dashboard for managing sessions and attendees",
     ],
-    techStack: ["Next.js", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/saturdayworkshops.webp",
   },
 ];
@@ -618,7 +618,7 @@ const ProductRow: React.FC<ProductRowProps> = ({
         useFlexGap
         sx={{ pt: 0.5, flexWrap: "wrap" }}
       >
-        {product.techStack.slice(0, 4).map((t) => (
+        {product.techStack.slice(0, 20).map((t) => (
           <Chip
             key={t}
             label={t}
