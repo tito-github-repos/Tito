@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "./components/footer/page";
 import Header from "./components/header/page";
 import ScrollToTop from "./components/scrolltotop";
+import DisableCopy from "./components/DisableCopy";
 
 export const metadata: Metadata = {
   title: "TITO IT Solutions | Chennai",
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <DisableCopy />
         <Header />
         <main>{children}</main>
         <Footer />
