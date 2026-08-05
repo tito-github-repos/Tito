@@ -170,6 +170,12 @@ const ContactInfoSection: React.FC = () => {
   const [turnstileError, setTurnstileError] = useState("");
   const turnstileRef = useRef<TurnstileInstance>(null);
 
+  // Debounce timers per field, so validation doesn't re-run on every
+  // keystroke — this also reduces render churn that can trip React's
+  // "Maximum update depth" guard when a browser extension (Grammarly,
+  // spell-checkers, autofill) mutates a controlled textarea's DOM node.
+  const validateTimers = useRef<Partial<Record<keyof ContactFormValues, ReturnType<typeof setTimeout>>>>({});
+
   const validateField = async (
     field: keyof ContactFormValues,
     updatedValues: ContactFormValues,
@@ -195,7 +201,14 @@ const ContactInfoSection: React.FC = () => {
 
       const updatedValues = { ...values, [field]: nextValue };
       setValues(updatedValues);
-      validateField(field, updatedValues);
+
+      // Debounce validation per field (250ms)
+      if (validateTimers.current[field]) {
+        clearTimeout(validateTimers.current[field]);
+      }
+      validateTimers.current[field] = setTimeout(() => {
+        validateField(field, updatedValues);
+      }, 250);
     };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -524,6 +537,12 @@ const ContactInfoSection: React.FC = () => {
                     helperText={errors.note}
                     sx={fieldSx}
                     slotProps={{
+                      htmlInput: {
+                        spellCheck: false,
+                        "data-gramm": "false",
+                        "data-gramm_editor": "false",
+                        "data-enable-grammarly": "false",
+                      },
                       input: {
                         startAdornment: (
                           <InputAdornment
