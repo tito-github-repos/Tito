@@ -1,4 +1,4 @@
-import React, { useState, type ChangeEvent } from "react";
+import React, { useState, useRef, type ChangeEvent } from "react";
 import * as yup from "yup";
 import {
   Alert,
@@ -20,6 +20,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import NotesIcon from "@mui/icons-material/Notes";
 import SendIcon from "@mui/icons-material/Send";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
 /* ---------------------------------------------------------------------- */
 /* Shared design tokens (match ContactHero)                               */
@@ -159,6 +160,16 @@ const ContactInfoSection: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  // --- Anti-spam additions ---
+  // Honeypot: real users never see or fill this. Bots that auto-fill every
+  // input on the page will populate it, which lets the server reject them.
+  const [honeypot, setHoneypot] = useState("");
+
+  // Cloudflare Turnstile token, produced once the widget verifies the visitor.
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileError, setTurnstileError] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
+
   const validateField = async (
     field: keyof ContactFormValues,
     updatedValues: ContactFormValues,
@@ -190,6 +201,13 @@ const ContactInfoSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSuccess(false);
+    setTurnstileError("");
+
+    if (!turnstileToken) {
+      setTurnstileError("Please complete the verification check.");
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -207,13 +225,20 @@ const ContactInfoSection: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          ...values,
+          honeypot, // should always be empty for real users
+          turnstileToken,
+        }),
       });
 
       const result = await response.json();
 
       if (!response.ok) {
         alert(result.message || "Something went wrong. Please try again.");
+        // Reset the widget so the user can retry with a fresh token
+        turnstileRef.current?.reset();
+        setTurnstileToken("");
         return;
       }
 
@@ -225,6 +250,9 @@ const ContactInfoSection: React.FC = () => {
         mobile: "",
         note: "",
       });
+      setHoneypot("");
+      turnstileRef.current?.reset();
+      setTurnstileToken("");
     } catch (err) {
       if (err instanceof yup.ValidationError) {
         const formErrors: ContactFormValues = {
@@ -509,6 +537,55 @@ const ContactInfoSection: React.FC = () => {
                     }}
                   />
                 </Grid>
+
+                {/* ---------------- Honeypot field (hidden from real users) ---------------- */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                  aria-hidden="true"
+                >
+                  <TextField
+                    name="company_website"
+                    label="Company Website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </Box>
+
+                {/* ---------------- Cloudflare Turnstile widget ---------------- */}
+                <Grid size={{ xs: 12 }}>
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                    onSuccess={(token) => {
+                      setTurnstileToken(token);
+                      setTurnstileError("");
+                    }}
+                    onExpire={() => setTurnstileToken("")}
+                    onError={() =>
+                      setTurnstileError("Verification failed. Please retry.")
+                    }
+                  />
+                  {turnstileError && (
+                    <Typography
+                      sx={{
+                        color: "#f28b82",
+                        fontSize: 12.5,
+                        mt: 1,
+                      }}
+                    >
+                      {turnstileError}
+                    </Typography>
+                  )}
+                </Grid>
+
                 <Grid size={{ xs: 12 }}>
                   <Button
                     type="submit"
