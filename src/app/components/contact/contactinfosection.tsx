@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useRef, type ChangeEvent } from "react";
 import * as yup from "yup";
 import {
