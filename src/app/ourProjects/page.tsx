@@ -238,7 +238,7 @@ const PROJECTS: Project[] = [
       "Gemini",
       "GitHub Copilot",
     ],
-    image: "/img/projects/portal-26.webp",
+    image: "/img/projects/portall.png",
   },
   {
     id: 6,
