@@ -175,7 +175,9 @@ const ContactInfoSection: React.FC = () => {
   // keystroke — this also reduces render churn that can trip React's
   // "Maximum update depth" guard when a browser extension (Grammarly,
   // spell-checkers, autofill) mutates a controlled textarea's DOM node.
-  const validateTimers = useRef<Partial<Record<keyof ContactFormValues, ReturnType<typeof setTimeout>>>>({});
+  const validateTimers = useRef<
+    Partial<Record<keyof ContactFormValues, ReturnType<typeof setTimeout>>>
+  >({});
 
   const validateField = async (
     field: keyof ContactFormValues,
@@ -366,8 +368,9 @@ const ContactInfoSection: React.FC = () => {
                 info@tito.org.in
               </InfoRow>
               <InfoRow icon={<PlaceIcon fontSize="inherit" />} label="Address">
-                Chennai TITO, #5 Sundararajan Street, Abhiramapuram, Chennai -
-                600018
+                B4, Lumiers Enclave, #5/1092, Giri Nagar Main Road,
+                <br />
+                Ramapuram, Chennai - 600089
                 <br />
                 USA - 7253 W Sunset Ave, Suite C, Springdale AR 72762.
               </InfoRow>
