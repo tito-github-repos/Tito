@@ -243,8 +243,7 @@ const PRODUCTS: Product[] = [
     brand: "Drill Daily",
     category: "Competitive Exam Preparation",
     status: "Live",
-    // Shows under both the EdTech and Community & Learning filters
-    categories: ["EdTech", "Community & Learning"],
+    categories: ["EdTech"],
     tagline:
       "DD is a competitive exams preparation platform for online and offline coaching classes.",
     overview:
@@ -256,6 +255,25 @@ const PRODUCTS: Product[] = [
     ],
     techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/drilldaily.webp",
+  },
+  {
+    id: 11,
+    title: "Discuss Daily",
+    brand: "Discuss Daily",
+    category: "Guidance & Consultation",
+    status: "Live",
+    categories: ["Community & Learning"],
+    tagline:
+      "Discuss Daily wants to increase the happiness quotient of everyone. We connect you to the right people at the right time.",
+    overview:
+      "Discuss Daily wants to increase the happiness quotient of everyone. We connect you to the right people at the right time, so every problem gets discussed with a qualified professional.",
+    highlights: [
+      "Students: academic and personal guidance",
+      "Finance and work: advice from financial and HR consultants",
+      "Family: support from experienced, retired professionals",
+    ],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
+    image: "/img/products/discussdaily.webp",
   },
   {
     id: 10,
