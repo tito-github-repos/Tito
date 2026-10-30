@@ -14,6 +14,7 @@ import RocketLaunchRounded from "@mui/icons-material/RocketLaunchRounded";
 import DesktopWindowsRounded from "@mui/icons-material/DesktopWindowsRounded";
 import SmartToyRounded from "@mui/icons-material/SmartToyRounded";
 import DatasetRounded from "@mui/icons-material/DatasetRounded";
+import PhoneIphoneRounded from "@mui/icons-material/PhoneIphoneRounded";
 
 const INK = "#0F172A";
 const BORDER = "rgba(255,255,255,0.09)";
@@ -35,7 +36,7 @@ const toolCategories = [
   {
     icon: CodeRounded,
     label: "Front End Tools",
-    items: "HTML, CSS, JavaScript, Bootstrap, Tailwind, React, Angular, Next",
+    items: "HTML, CSS, JavaScript, Bootstrap, Tailwind, Material UI, React, Angular, Next js",
     bg: ASH_LIGHT,
     color: INK,
   },
@@ -58,7 +59,7 @@ const toolCategories = [
     icon: SmartToyRounded,
     label: "AI Agenting Development",
     items:
-      "LangChain, LangGraph, AutoGen, CrewAI, OpenAI, Claude, RAG, Vector DBs",
+      "AI Agentic framework, RAG agent, Process Orchestrator Agent, Marketing Agent, Knowledge retrieval agent ",
     bg: ASH_LIGHT,
     color: INK,
   },
@@ -66,14 +67,21 @@ const toolCategories = [
     icon: DatasetRounded,
     label: "Data Engineering",
     items:
-      "ETL Pipelines, Apache Spark, Airflow, Kafka, Snowflake, Databricks, Data Warehousing",
+      "ETL Pipelines, Apache Spark, Airflow, Kafka, Snowflake, Data Warehousing SQL Server (SSIS, SSRS, SSAS), Power BI, Azure Data Factory, Azure Databricks",
     bg: ASH_LIGHT,
     color: INK,
   },
   {
     icon: GroupsRounded,
-    label: "Consulting",
-    items: "DAST, SAST, VAPT, ISO-27001:2022, CyberSecurity, GenAI, IOT",
+    label: "Cyber Security ",
+    items: "DAST, SAST, VAPT, ISO-27001:2022",
+    bg: ASH_LIGHT,
+    color: INK,
+  },
+  {
+    icon: PhoneIphoneRounded,
+    label: "Mobile Framework",
+    items: "Flutter - Android, iOS",
     bg: ASH_LIGHT,
     color: INK,
   },

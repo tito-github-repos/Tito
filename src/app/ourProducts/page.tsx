@@ -177,7 +177,7 @@ const PRODUCTS: Product[] = [
       "Subject and topic-wise performance analytics",
       "Question bank with difficulty-based practice sets",
     ],
-    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/prelimspass.webp",
   },
   {
@@ -196,7 +196,7 @@ const PRODUCTS: Product[] = [
       "Playful, reward-driven progression to keep kids engaged",
       "Parent dashboard to track focus, memory, and problem-solving growth",
     ],
-    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/2212.webp",
   },
   {
@@ -215,27 +215,8 @@ const PRODUCTS: Product[] = [
       "Order tracking and notifications from purchase to delivery",
       "Admin panel for inventory, pricing, and promotions",
     ],
-    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/menmaifoods.webp",
-  },
-  {
-    id: 8,
-    title: "Drill Daily",
-    brand: "Drill Daily",
-    category: "Daily Fitness & Skill Drills",
-    status: "Live",
-    categories: ["Fitness"],
-    tagline:
-      "A daily drills app that keeps users consistent with short, focused fitness and skill-building routines.",
-    overview:
-      "Drill Daily is built around one idea: consistency beats intensity. It delivers a short, focused drill every day — fitness, mobility, or skill-based — with streak tracking and reminders that keep users showing up, rather than overwhelming them with long, complex programs.",
-    highlights: [
-      "Daily rotating drills with adjustable difficulty",
-      "Streak tracking and reminders to build consistent habits",
-      "Progress history so users can see improvement over time",
-    ],
-    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
-    image: "/img/products/drilldaily.webp",
   },
   {
     id: 9,
@@ -253,8 +234,43 @@ const PRODUCTS: Product[] = [
       "Built-in booking, scheduling, and payment collection",
       "Instructor dashboard for managing sessions and attendees",
     ],
-    techStack: ["Next.js","Material UI", "TypeScript", "MySQL", "Prisma"],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
     image: "/img/products/saturdayworkshops.webp",
+  },
+  {
+    id: 8,
+    title: "Drill Daily",
+    brand: "Drill Daily",
+    category: "Competitive Exam Preparation",
+    status: "Live",
+    // Shows under both the EdTech and Community & Learning filters
+    categories: ["EdTech", "Community & Learning"],
+    tagline:
+      "DD is a competitive exams preparation platform for online and offline coaching classes.",
+    overview:
+      "Drill Daily is a competitive exams preparation platform for online and offline coaching classes. It brings structured guidance, expert trainers, and consistent practice together so students can prepare with a clear plan, whether they learn one-to-one or in a group.",
+    highlights: [
+      "One-to-one and group classes (up to 20 students)",
+      "Exam-specific structured learning with expert teachers",
+      "Flexible class modes: online or offline",
+    ],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
+    image: "/img/products/drilldaily.webp",
+  },
+  {
+    id: 10,
+    title: "Do Daily",
+    brand: "Do Daily",
+    category: "Daily Mental Fitness",
+    status: "Live",
+    categories: ["Community & Learning"],
+    tagline:
+      "Do Daily is a daily mental fitness initiative designed to stimulate the brain through simple, focused exercises that take just 10 minutes a day.",
+    overview:
+      "Do Daily is a daily mental fitness initiative designed to stimulate the brain through simple, focused exercises that take just 10 minutes a day.",
+    highlights: ["10 Minutes", "Every Day", "For Everyone"],
+    techStack: ["Next.js", "Material UI", "TypeScript", "MySQL", "Prisma"],
+    image: "/img/products/dodaily.webp",
   },
 ];
 
@@ -266,7 +282,6 @@ const FILTERS = [
   "EdTech",
   "Kids Apps",
   "E-Commerce",
-  "Fitness",
   "Community & Learning",
 ];
 
@@ -806,7 +821,7 @@ const OurProducts: React.FC = () => {
                 mx: "auto",
               }}
             >
-              In-house products spanning Community & Learning, education, fitness, and
+              In-house products spanning education, community learning, and
               e-commerce — built and maintained by our own team.
             </Typography>
           </Stack>
