@@ -16,7 +16,8 @@ import { useRouter } from "next/navigation";
 const GOLD = "#cda06a";
 const GOLD_SOFT = "#e8caa0";
 const TEXT = "#f5f4f2";
-const TEXT_MUTED = "rgba(245,244,242,.72)";
+const goldText = { color: GOLD_SOFT, fontWeight: 600 };
+const strongText = { color: TEXT, fontWeight: 600 };
 
 const HomeHero: React.FC = () => {
   const router = useRouter();
@@ -31,11 +32,14 @@ const HomeHero: React.FC = () => {
 
         width: "100%",
 
-        /* Reduced hero height */
         minHeight: {
           xs: 560,
-          lg: 580,
+          lg: 620,
         },
+
+        /* Clears the overlaid navbar */
+        pt: { xs: 12, md: 11 },
+        pb: { xs: 5, md: 5 },
 
         display: "flex",
         alignItems: "center",
@@ -51,15 +55,9 @@ const HomeHero: React.FC = () => {
           =============================== */
 
           "@keyframes gradientMove": {
-            "0%": {
-              backgroundPosition: "0% 50%",
-            },
-            "50%": {
-              backgroundPosition: "100% 50%",
-            },
-            "100%": {
-              backgroundPosition: "0% 50%",
-            },
+            "0%": { backgroundPosition: "0% 50%" },
+            "50%": { backgroundPosition: "100% 50%" },
+            "100%": { backgroundPosition: "0% 50%" },
           },
 
           "@keyframes particleMove": {
@@ -73,12 +71,8 @@ const HomeHero: React.FC = () => {
           },
 
           "@keyframes dotPulse": {
-            "0%,100%": {
-              opacity: 0.25,
-            },
-            "50%": {
-              opacity: 0.55,
-            },
+            "0%,100%": { opacity: 0.25 },
+            "50%": { opacity: 0.55 },
           },
 
           /* ===============================
@@ -86,39 +80,21 @@ const HomeHero: React.FC = () => {
           =============================== */
 
           "@keyframes orbLeft": {
-            "0%": {
-              transform: "translate(-6%,-5%) scale(1)",
-            },
-            "50%": {
-              transform: "translate(6%,5%) scale(1.08)",
-            },
-            "100%": {
-              transform: "translate(-6%,-5%) scale(1)",
-            },
+            "0%": { transform: "translate(-6%,-5%) scale(1)" },
+            "50%": { transform: "translate(6%,5%) scale(1.08)" },
+            "100%": { transform: "translate(-6%,-5%) scale(1)" },
           },
 
           "@keyframes orbRight": {
-            "0%": {
-              transform: "translate(5%,6%) scale(1)",
-            },
-            "50%": {
-              transform: "translate(-5%,-6%) scale(1.12)",
-            },
-            "100%": {
-              transform: "translate(5%,6%) scale(1)",
-            },
+            "0%": { transform: "translate(5%,6%) scale(1)" },
+            "50%": { transform: "translate(-5%,-6%) scale(1.12)" },
+            "100%": { transform: "translate(5%,6%) scale(1)" },
           },
 
           "@keyframes centerGlow": {
-            "0%": {
-              transform: "translateY(0px)",
-            },
-            "50%": {
-              transform: "translateY(-25px)",
-            },
-            "100%": {
-              transform: "translateY(0px)",
-            },
+            "0%": { transform: "translateY(0px)" },
+            "50%": { transform: "translateY(-25px)" },
+            "100%": { transform: "translateY(0px)" },
           },
 
           /* ===============================
@@ -130,12 +106,8 @@ const HomeHero: React.FC = () => {
               transform: "translateX(-40%) rotate(10deg)",
               opacity: 0,
             },
-            "15%": {
-              opacity: 0.55,
-            },
-            "60%": {
-              opacity: 0.55,
-            },
+            "15%": { opacity: 0.55 },
+            "60%": { opacity: 0.55 },
             "100%": {
               transform: "translateX(180%) rotate(10deg)",
               opacity: 0,
@@ -147,79 +119,48 @@ const HomeHero: React.FC = () => {
           =============================== */
 
           "@keyframes fadeUp": {
-            from: {
-              opacity: 0,
-              transform: "translateY(30px)",
-            },
-            to: {
-              opacity: 1,
-              transform: "translateY(0px)",
-            },
+            from: { opacity: 0, transform: "translateY(30px)" },
+            to: { opacity: 1, transform: "translateY(0px)" },
           },
 
           "@keyframes floatHeading": {
-            "0%": {
-              transform: "translateY(0px)",
-            },
-            "50%": {
-              transform: "translateY(-8px)",
-            },
-            "100%": {
-              transform: "translateY(0px)",
-            },
+            "0%": { transform: "translateY(0px)" },
+            "50%": { transform: "translateY(-8px)" },
+            "100%": { transform: "translateY(0px)" },
           },
 
           "@keyframes shine": {
-            "0%": {
-              backgroundPosition: "-300px",
-            },
-            "100%": {
-              backgroundPosition: "300px",
-            },
+            "0%": { backgroundPosition: "-300px" },
+            "100%": { backgroundPosition: "300px" },
           },
 
           "@keyframes underlineMove": {
-            "0%": {
-              backgroundPosition: "0%",
-            },
-            "100%": {
-              backgroundPosition: "200%",
-            },
+            "0%": { backgroundPosition: "0%" },
+            "100%": { backgroundPosition: "200%" },
           },
-          "@keyframes kenBurns": {
-            "0%": {
-              transform: "scale(1.05)",
-            },
 
-            "100%": {
-              transform: "scale(1.12)",
-            },
+          "@keyframes kenBurns": {
+            "0%": { transform: "scale(1.05)" },
+            "100%": { transform: "scale(1.12)" },
           },
         }}
       />
+
       {/* =========================
-      HERO BACKGROUND IMAGE
-========================== */}
+          HERO BACKGROUND IMAGE
+      ========================== */}
 
       <Box
         sx={{
           position: "absolute",
           inset: 0,
-
           backgroundImage: "url('/img/contact/bg-img2.webp')",
-
           backgroundSize: "cover",
-
           backgroundPosition: "center",
-
           backgroundRepeat: "no-repeat",
-
           filter: "brightness(1.15) contrast(1.08) saturate(1.1)",
-
           transform: "scale(1.05)",
-
           animation: "kenBurns 18s ease-in-out infinite alternate",
-
           zIndex: 0,
         }}
       />
@@ -233,12 +174,9 @@ const HomeHero: React.FC = () => {
           position: "absolute",
           inset: 0,
           zIndex: 0,
-
           backgroundImage:
             "radial-gradient(rgba(205,160,106,.28) 1px, transparent 1.5px)",
-
           backgroundSize: "28px 28px",
-
           animation: "dotPulse 6s ease-in-out infinite",
         }}
       />
@@ -253,7 +191,6 @@ const HomeHero: React.FC = () => {
           inset: 0,
           zIndex: 0,
           opacity: 0.35,
-
           backgroundImage: `
             radial-gradient(circle at 18% 20%, ${GOLD} 1px, transparent 2px),
             radial-gradient(circle at 82% 18%, ${GOLD_SOFT} 1px, transparent 2px),
@@ -261,9 +198,7 @@ const HomeHero: React.FC = () => {
             radial-gradient(circle at 75% 70%, ${GOLD_SOFT} 1px, transparent 2px),
             radial-gradient(circle at 45% 35%, rgba(255,255,255,.9) 1px, transparent 2px)
           `,
-
           backgroundSize: "260px 260px",
-
           animation: "particleMove 28s linear infinite",
         }}
       />
@@ -275,31 +210,15 @@ const HomeHero: React.FC = () => {
       <Box
         sx={{
           position: "absolute",
-
           top: "-20%",
           left: "-10%",
-
-          width: {
-            xs: 280,
-            sm: 340,
-            md: 500,
-          },
-
-          height: {
-            xs: 280,
-            sm: 340,
-            md: 500,
-          },
-
+          width: { xs: 280, sm: 340, md: 500 },
+          height: { xs: 280, sm: 340, md: 500 },
           borderRadius: "50%",
-
           background:
             "radial-gradient(circle, rgba(205,160,106,.28), transparent 70%)",
-
           filter: "blur(35px)",
-
           animation: "orbLeft 18s ease-in-out infinite",
-
           zIndex: 0,
         }}
       />
@@ -311,31 +230,15 @@ const HomeHero: React.FC = () => {
       <Box
         sx={{
           position: "absolute",
-
           right: "-10%",
           bottom: "-20%",
-
-          width: {
-            xs: 300,
-            sm: 380,
-            md: 560,
-          },
-
-          height: {
-            xs: 300,
-            sm: 380,
-            md: 560,
-          },
-
+          width: { xs: 300, sm: 380, md: 560 },
+          height: { xs: 300, sm: 380, md: 560 },
           borderRadius: "50%",
-
           background:
             "radial-gradient(circle, rgba(232,202,160,.22), transparent 70%)",
-
           filter: "blur(45px)",
-
           animation: "orbRight 22s ease-in-out infinite",
-
           zIndex: 0,
         }}
       />
@@ -347,31 +250,16 @@ const HomeHero: React.FC = () => {
       <Box
         sx={{
           position: "absolute",
-
           left: "50%",
           top: "50%",
-
           transform: "translate(-50%, -50%)",
-
-          width: {
-            xs: 240,
-            md: 380,
-          },
-
-          height: {
-            xs: 240,
-            md: 380,
-          },
-
+          width: { xs: 240, md: 380 },
+          height: { xs: 240, md: 380 },
           borderRadius: "50%",
-
           background:
             "radial-gradient(circle, rgba(255,255,255,.05), transparent 70%)",
-
           filter: "blur(50px)",
-
           animation: "centerGlow 12s ease-in-out infinite",
-
           zIndex: 0,
         }}
       />
@@ -383,13 +271,10 @@ const HomeHero: React.FC = () => {
       <Box
         sx={{
           position: "absolute",
-
           top: "-30%",
           left: 0,
-
           width: "35%",
           height: "180%",
-
           background: `
             linear-gradient(
               100deg,
@@ -400,11 +285,8 @@ const HomeHero: React.FC = () => {
               transparent
             )
           `,
-
           animation: "sweep 9s linear infinite",
-
           pointerEvents: "none",
-
           zIndex: 0,
         }}
       />
@@ -417,17 +299,15 @@ const HomeHero: React.FC = () => {
         sx={{
           position: "absolute",
           inset: 0,
-
           background: `
-      radial-gradient(
-        ellipse at center,
-        rgba(8,8,8,.35) 0%,
-        rgba(8,8,8,.55) 45%,
-        rgba(8,8,8,.78) 78%,
-        rgba(8,8,8,.9) 100%
-      )
-    `,
-
+            radial-gradient(
+              ellipse at center,
+              rgba(8,8,8,.5) 0%,
+              rgba(8,8,8,.6) 45%,
+              rgba(8,8,8,.78) 78%,
+              rgba(8,8,8,.9) 100%
+            )
+          `,
           zIndex: 1,
         }}
       />
@@ -437,34 +317,22 @@ const HomeHero: React.FC = () => {
       ========================== */}
 
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={{
           position: "relative",
           zIndex: 5,
-
-          px: {
-            xs: 3,
-            sm: 4,
-          },
-
-          py: {
-            xs: 4,
-            md: 5,
-          },
-
+          px: { xs: 3, sm: 4 },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-
           textAlign: "center",
         }}
       >
         <Stack
           spacing={{ xs: 2, md: 2.25 }}
-
           sx={{
             width: "100%",
-            maxWidth: 850,
+            maxWidth: 1000,
             mx: "auto",
             textAlign: "center",
             alignItems: "center",
@@ -472,25 +340,18 @@ const HomeHero: React.FC = () => {
           }}
         >
           {/* =========================
-          EYEBROW
-  ========================== */}
+                  EYEBROW
+          ========================== */}
 
           <Stack
             direction="row"
             spacing={1.5}
-
             sx={{
               animation: "fadeUp .7s ease forwards",
               alignItems: "center",
             }}
           >
-            <Box
-              sx={{
-                width: 32,
-                height: 2,
-                bgcolor: GOLD,
-              }}
-            />
+            <Box sx={{ width: 32, height: 2, bgcolor: GOLD }} />
 
             <Typography
               sx={{
@@ -504,43 +365,30 @@ const HomeHero: React.FC = () => {
               WELCOME TO TITO
             </Typography>
 
-            <Box
-              sx={{
-                width: 32,
-                height: 2,
-                bgcolor: GOLD,
-              }}
-            />
+            <Box sx={{ width: 32, height: 2, bgcolor: GOLD }} />
           </Stack>
 
           {/* =========================
-            HEADING
-  ========================== */}
+                  HEADING
+          ========================== */}
 
           <Typography
             component="h1"
             sx={{
               m: 0,
-
-              maxWidth: 900,
-
+              maxWidth: "none",
               color: TEXT,
-
               fontFamily: "Poppins",
-
               fontWeight: 700,
-
               fontSize: {
                 xs: "1.9rem",
                 sm: "2.5rem",
-                md: "3.1rem",
-                lg: "3.5rem",
+                md: "2.3rem",
+                lg: "2.9rem",
               },
-
-              lineHeight: 1.1,
-
+              lineHeight: 1.15,
               letterSpacing: "-0.03em",
-
+              whiteSpace: { xs: "normal", md: "nowrap" },
               animation:
                 "fadeUp .8s ease .15s both, floatHeading 6s ease-in-out infinite",
             }}
@@ -550,21 +398,16 @@ const HomeHero: React.FC = () => {
               component="span"
               sx={{
                 display: "inline-block",
-
                 background: `linear-gradient(
-          90deg,
-          ${GOLD},
-          #fff5dc,
-          ${GOLD},
-          ${GOLD_SOFT}
-        )`,
-
+                  90deg,
+                  ${GOLD},
+                  #fff5dc,
+                  ${GOLD},
+                  ${GOLD_SOFT}
+                )`,
                 backgroundSize: "300px",
-
                 WebkitBackgroundClip: "text",
-
                 WebkitTextFillColor: "transparent",
-
                 animation: "shine 3s linear infinite",
               }}
             >
@@ -574,62 +417,82 @@ const HomeHero: React.FC = () => {
           </Typography>
 
           {/* =========================
-        ANIMATED UNDERLINE
-  ========================== */}
+              ANIMATED UNDERLINE
+          ========================== */}
 
           <Box
             sx={{
               width: 130,
               height: 3,
-
               borderRadius: 10,
-
               background: `linear-gradient(
-        90deg,
-        transparent,
-        ${GOLD},
-        #ffffff,
-        ${GOLD},
-        transparent
-      )`,
-
+                90deg,
+                transparent,
+                ${GOLD},
+                #ffffff,
+                ${GOLD},
+                transparent
+              )`,
               backgroundSize: "200%",
-
               animation: "underlineMove 4s linear infinite",
             }}
           />
 
           {/* =========================
-         DESCRIPTION
-  ========================== */}
+                DESCRIPTION
+          ========================== */}
 
-          <Typography
+          <Box
             sx={{
-              maxWidth: 650,
-
-              color: TEXT_MUTED,
-
-              fontSize: {
-                xs: 14,
-                sm: 15,
-                md: 16,
-              },
-
-              lineHeight: 1.7,
-
+              width: "100%",
+              maxWidth: 780,
               animation: "fadeUp .9s ease .25s both",
+              textShadow: "0 1px 12px rgba(0,0,0,.6)",
             }}
           >
-            We support businesses to grow through future-ready technology solutions, specializing in custom software development, web and mobile applications, cloud services, AI-powered solutions, cybersecurity, and digital transformation to help organizations innovate with confidence.
-          </Typography>
+            <Typography
+              sx={{
+                color: "rgba(245,244,242,.9)",
+                fontSize: { xs: 14.5, sm: 15.5, md: 16 },
+                lineHeight: 1.9,
+                textAlign: { xs: "left", md: "justify" },
+                textAlignLast: { xs: "left", md: "center" },
+                textJustify: "inter-word",
+                hyphens: "none",
+                wordBreak: "normal",
+                overflowWrap: "normal",
+              }}
+            >
+              We deliver{" "}
+              <Box component="span" sx={goldText}>
+                secure, scalable, and future-ready
+              </Box>{" "}
+              digital solutions designed around your business needs. Our team
+              brings together{" "}
+              <Box component="span" sx={strongText}>
+                senior consultants
+              </Box>{" "}
+              and dedicated technology professionals with expertise across
+              architecture, cybersecurity, project management, documentation,
+              and end-to-end delivery. We combine strategic thinking with{" "}
+              <Box component="span" sx={strongText}>
+                hands-on execution
+              </Box>{" "}
+              to deliver solutions that are reliable, adaptable, and built for{" "}
+              <Box component="span" sx={goldText}>
+                long-term value
+              </Box>
+              .
+            </Typography>
+          </Box>
+
           {/* =========================
               ACTION BUTTONS
-      ========================== */}
+          ========================== */}
 
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={2}
-
             sx={{
               pt: 1,
               animation: "fadeUp 1s ease .4s both",
@@ -644,31 +507,19 @@ const HomeHero: React.FC = () => {
               endIcon={<ArrowForwardIcon />}
               sx={{
                 minWidth: 170,
-
                 px: 3.5,
                 py: 1.25,
-
                 borderRadius: "12px",
-
                 textTransform: "none",
-
                 fontSize: 14.5,
-
                 fontWeight: 600,
-
                 color: "#1b1308",
-
                 background: `linear-gradient(135deg, ${GOLD_SOFT}, ${GOLD})`,
-
                 boxShadow: "0 10px 30px rgba(205,160,106,.30)",
-
                 transition: "all .35s ease",
-
                 "&:hover": {
                   transform: "translateY(-5px)",
-
                   background: `linear-gradient(135deg, ${GOLD}, ${GOLD_SOFT})`,
-
                   boxShadow: "0 16px 40px rgba(205,160,106,.45)",
                 },
               }}
@@ -687,33 +538,20 @@ const HomeHero: React.FC = () => {
               }}
               sx={{
                 minWidth: 180,
-
                 px: 3.5,
                 py: 1.25,
-
                 borderRadius: "12px",
-
                 textTransform: "none",
-
                 fontSize: 14.5,
-
                 fontWeight: 600,
-
                 color: TEXT,
-
                 border: "1px solid rgba(255,255,255,.16)",
-
                 background: "rgba(255,255,255,.04)",
-
                 backdropFilter: "blur(10px)",
-
                 transition: "all .35s ease",
-
                 "&:hover": {
                   transform: "translateY(-5px)",
-
                   borderColor: GOLD,
-
                   background: "rgba(255,255,255,.08)",
                 },
               }}

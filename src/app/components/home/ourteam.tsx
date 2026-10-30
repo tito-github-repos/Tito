@@ -100,7 +100,7 @@ const roles = [
   {
     icon: PersonOutlineRoundedIcon,
     title: "Project Manager",
-    experience: "20+ Years Experience",
+    experience: "Full-time|16+ Years Experience",
     desc: "Leading projects with precision ensuring on-time, on-budget delivery.",
     col: "right" as const,
     row: 1,
@@ -109,7 +109,7 @@ const roles = [
   {
     icon: EditRoundedIcon,
     title: "Technical Writer",
-    experience: "6+ Years Experience",
+    experience: "Full-time|7+ Years Experience",
     desc: "Simplifying complex ideas and delivering clear, impactful documentation.",
     col: "right" as const,
     row: 2,
@@ -120,7 +120,7 @@ const roles = [
 const centerRole = {
   icon: GroupsRoundedIcon,
   title: "Team Members",
-  experience: "Full-time|1-6 Years Experience",
+  experience: "Full-time|2-6 Years Experience",
   desc: "Dedicated full-time team members growing their expertise across projects.",
 };
 
