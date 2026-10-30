@@ -46,6 +46,7 @@ const HomeHero: React.FC = () => {
         justifyContent: "center",
 
         backgroundColor: "#080808",
+        fontFamily: "Manrope, Arial, sans-serif",
       }}
     >
       <GlobalStyles
@@ -356,10 +357,10 @@ const HomeHero: React.FC = () => {
             <Typography
               sx={{
                 color: GOLD,
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: 13,
                 letterSpacing: ".25em",
-                fontFamily: "Poppins",
+                fontFamily: "Manrope, Arial, sans-serif",
               }}
             >
               WELCOME TO TITO
@@ -378,8 +379,8 @@ const HomeHero: React.FC = () => {
               m: 0,
               maxWidth: "none",
               color: TEXT,
-              fontFamily: "Poppins",
-              fontWeight: 700,
+              fontFamily: "Manrope, Arial, sans-serif",
+              fontWeight: 800,
               fontSize: {
                 xs: "1.9rem",
                 sm: "2.5rem",
@@ -387,13 +388,13 @@ const HomeHero: React.FC = () => {
                 lg: "2.9rem",
               },
               lineHeight: 1.15,
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.045em",
               whiteSpace: { xs: "normal", md: "nowrap" },
               animation:
                 "fadeUp .8s ease .15s both, floatHeading 6s ease-in-out infinite",
             }}
           >
-            Empowering Your{" "}
+            We Think With{" "}
             <Box
               component="span"
               sx={{
@@ -411,11 +412,9 @@ const HomeHero: React.FC = () => {
                 animation: "shine 3s linear infinite",
               }}
             >
-              Technology
-            </Box>{" "}
-            Journey
+              Clients
+            </Box>
           </Typography>
-
           {/* =========================
               ANIMATED UNDERLINE
           ========================== */}
@@ -453,6 +452,8 @@ const HomeHero: React.FC = () => {
             <Typography
               sx={{
                 color: "rgba(245,244,242,.9)",
+                fontFamily: "Inter, Arial, sans-serif",
+                fontWeight: 400,
                 fontSize: { xs: 14.5, sm: 15.5, md: 16 },
                 lineHeight: 1.9,
                 textAlign: { xs: "left", md: "justify" },
@@ -511,8 +512,9 @@ const HomeHero: React.FC = () => {
                 py: 1.25,
                 borderRadius: "12px",
                 textTransform: "none",
+                fontFamily: "Manrope, Arial, sans-serif",
                 fontSize: 14.5,
-                fontWeight: 600,
+                fontWeight: 700,
                 color: "#1b1308",
                 background: `linear-gradient(135deg, ${GOLD_SOFT}, ${GOLD})`,
                 boxShadow: "0 10px 30px rgba(205,160,106,.30)",
@@ -542,8 +544,9 @@ const HomeHero: React.FC = () => {
                 py: 1.25,
                 borderRadius: "12px",
                 textTransform: "none",
+                fontFamily: "Manrope, Arial, sans-serif",
                 fontSize: 14.5,
-                fontWeight: 600,
+                fontWeight: 700,
                 color: TEXT,
                 border: "1px solid rgba(255,255,255,.16)",
                 background: "rgba(255,255,255,.04)",
